@@ -11,7 +11,7 @@ const categories = ['All', 'HIIT', 'Strength', 'Yoga', 'Cycling', 'Boxing', 'Rec
 
 export default function ClassesPage() {
   return (
-    <div style={{ background: '#060B18' }} className="min-h-screen">
+    <div style={{ background: '#0A0A0A' }} className="min-h-screen">
 
       {/* Header */}
       <section className="pt-32 pb-16 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto">
@@ -45,7 +45,7 @@ export default function ClassesPage() {
           {classes.map((cls) => (
             <div key={cls.id}
               className="rounded-2xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 hover:-translate-y-1"
-              style={{ background: '#0C1228' }}>
+              style={{ background: 'rgba(255,255,255,0.04)' }}>
 
               {/* Visual header */}
               <div className="h-44 relative flex items-end p-5" style={{ background: cls.gradient }}>
@@ -104,7 +104,7 @@ export default function ClassesPage() {
         <div className="mt-16 text-center">
           <p className="text-white/40 text-[15px] mb-6">Ready to try your first class for free?</p>
           <a href="/contact"
-            className="inline-flex items-center gap-2 font-black px-10 py-4 rounded-full text-[#06080F] text-[15px] hover:opacity-90 transition-all hover:scale-[1.03] active:scale-[0.97]"
+            className="inline-flex items-center gap-2 font-black px-10 py-4 rounded-lg text-[#0A0A0A] text-[15px] hover:opacity-90 transition-all hover:scale-[1.03] active:scale-[0.97]"
             style={{ background: '#C8FF00' }}>
             Claim My Free Class →
           </a>

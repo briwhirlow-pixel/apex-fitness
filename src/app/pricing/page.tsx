@@ -29,7 +29,7 @@ const faqs = [
 
 export default function PricingPage() {
   return (
-    <div style={{ background: '#060B18' }} className="min-h-screen">
+    <div style={{ background: '#0A0A0A' }} className="min-h-screen">
 
       {/* Header */}
       <section className="pt-32 pb-16 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto text-center">
@@ -52,12 +52,12 @@ export default function PricingPage() {
                   ? 'border-[#C8FF00]/40 scale-[1.02]'
                   : 'border-white/[0.06] hover:border-white/15'
               }`}
-              style={{ background: tier.highlighted ? '#0A1535' : '#0C1228' }}>
+              style={{ background: tier.highlighted ? 'rgba(200,255,0,0.06)' : 'rgba(255,255,255,0.04)' }}>
 
               {tier.badge && (
                 <span className={`absolute -top-3.5 left-6 text-[11px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase ${
                   tier.highlighted
-                    ? 'bg-[#C8FF00] text-[#06080F]'
+                    ? 'bg-[#C8FF00] text-[#0A0A0A]'
                     : 'bg-white/10 text-white/60'
                 }`}>
                   {tier.badge}
@@ -81,7 +81,7 @@ export default function PricingPage() {
                   <li key={f} className="flex items-start gap-3 text-[13px]">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{ background: tier.highlighted ? '#C8FF00' : 'rgba(200,255,0,0.12)' }}>
-                      <svg width="8" height="8" fill="none" stroke={tier.highlighted ? '#060B18' : '#C8FF00'} viewBox="0 0 24 24">
+                      <svg width="8" height="8" fill="none" stroke={tier.highlighted ? '#0A0A0A' : '#C8FF00'} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
                       </svg>
                     </div>
@@ -91,9 +91,9 @@ export default function PricingPage() {
               </ul>
 
               <a href="/contact"
-                className={`block text-center py-4 rounded-full font-black text-[14px] transition-all hover:scale-[1.02] active:scale-[0.98] ${
+                className={`block text-center py-4 rounded-lg font-black text-[14px] transition-all hover:scale-[1.02] active:scale-[0.98] ${
                   tier.highlighted
-                    ? 'bg-[#C8FF00] text-[#06080F] hover:bg-white'
+                    ? 'bg-[#C8FF00] text-[#0A0A0A] hover:bg-white'
                     : 'bg-white/[0.06] text-white hover:bg-white/10 border border-white/10'
                 }`}>
                 {tier.cta} →
@@ -122,7 +122,7 @@ export default function PricingPage() {
         </h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.q} className="rounded-2xl p-6 border border-white/[0.06]" style={{ background: '#0C1228' }}>
+            <div key={faq.q} className="rounded-2xl p-6 border border-white/[0.06]" style={{ background: 'rgba(255,255,255,0.04)' }}>
               <p className="text-white font-bold text-[15px] mb-2">{faq.q}</p>
               <p className="text-white/45 text-[14px] leading-relaxed">{faq.a}</p>
             </div>
@@ -132,7 +132,7 @@ export default function PricingPage() {
         <div className="mt-12 text-center">
           <p className="text-white/40 text-[15px] mb-6">Still have questions? We're happy to help.</p>
           <a href="/contact"
-            className="inline-flex items-center gap-2 font-black px-10 py-4 rounded-full text-[#06080F] text-[15px] hover:opacity-90 transition-all hover:scale-[1.03] active:scale-[0.97]"
+            className="inline-flex items-center gap-2 font-black px-10 py-4 rounded-lg text-[#0A0A0A] text-[15px] hover:opacity-90 transition-all hover:scale-[1.03] active:scale-[0.97]"
             style={{ background: '#C8FF00' }}>
             Talk to Us →
           </a>

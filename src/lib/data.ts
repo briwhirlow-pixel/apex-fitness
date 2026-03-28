@@ -207,7 +207,7 @@ export const testimonials = [
 export const stats = [
   { value: "1,200+", label: "Active Members" },
   { value: "40+", label: "Classes Per Week" },
-  { value: "8", label: "Elite Coaches" },
+  { value: "3", label: "Elite Coaches" },
   { value: "4.9★", label: "Google Rating" },
 ];
 

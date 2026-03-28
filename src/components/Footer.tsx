@@ -71,8 +71,8 @@ export default function Footer() {
               </p>
               <div>
                 <p className="text-white/25 text-[11px] uppercase tracking-widest mb-1 font-bold">Hours</p>
-                <p className="text-white/45 text-[13px]">Mon–Fri: 5:30am – 9pm</p>
-                <p className="text-white/45 text-[13px]">Sat–Sun: 7am – 6pm</p>
+                <p className="text-white/45 text-[13px]">Mon–Fri: {siteConfig.hours.weekday}</p>
+                <p className="text-white/45 text-[13px]">Sat: {siteConfig.hours.saturday} · Sun: {siteConfig.hours.sunday}</p>
               </div>
               <a href={`mailto:${siteConfig.email}`} className="text-white/45 text-[13px] hover:text-white transition-colors block">
                 {siteConfig.email}
