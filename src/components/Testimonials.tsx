@@ -2,7 +2,7 @@ import { testimonials } from '@/lib/data';
 
 export default function Testimonials() {
   return (
-    <section className="py-24 sm:py-32" style={{ background: '#0A0C14' }}>
+    <section className="py-24 sm:py-32" style={{ background: '#080E1E' }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
 
         <div className="text-center mb-12 sm:mb-16">
@@ -16,7 +16,7 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div key={t.name}
               className="rounded-2xl p-7 flex flex-col gap-5 border border-white/[0.06] hover:border-white/15 transition-all duration-300"
-              style={{ background: '#0E1118' }}>
+              style={{ background: '#0C1228' }}>
 
               {/* Stars + tag */}
               <div className="flex items-center justify-between">

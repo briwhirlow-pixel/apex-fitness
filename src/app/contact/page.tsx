@@ -17,7 +17,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div style={{ background: '#06080F' }} className="min-h-screen">
+    <div style={{ background: '#060B18' }} className="min-h-screen">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-12 pt-32 pb-24">
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -40,7 +40,7 @@ export default function ContactPage() {
                 { icon: '📞', title: 'Phone', body: siteConfig.phone },
                 { icon: '✉️', title: 'Email', body: siteConfig.email },
               ].map((item) => (
-                <div key={item.title} className="flex items-start gap-4 rounded-2xl p-5 border border-white/[0.06]" style={{ background: '#0E1118' }}>
+                <div key={item.title} className="flex items-start gap-4 rounded-2xl p-5 border border-white/[0.06]" style={{ background: '#0C1228' }}>
                   <span className="text-xl flex-shrink-0">{item.icon}</span>
                   <div>
                     <p className="text-white/25 text-[11px] uppercase tracking-widest font-semibold mb-1">{item.title}</p>
@@ -86,7 +86,7 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit}
                 className="rounded-3xl p-8 sm:p-10 border border-white/[0.06]"
-                style={{ background: '#0E1118' }}>
+                style={{ background: '#0C1228' }}>
 
                 <h2 className="text-white font-black text-[22px] tracking-tight mb-8">Claim your free class</h2>
 
@@ -121,9 +121,9 @@ export default function ContactPage() {
                     <select required
                       className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3.5 text-white/70 text-[14px] focus:outline-none focus:border-[#C8FF00]/50 transition-colors appearance-none"
                       style={{ background: 'rgba(255,255,255,0.04)' }}>
-                      <option value="" className="bg-[#0E1118]">Pick a class</option>
+                      <option value="" className="bg-[#0C1228]">Pick a class</option>
                       {['HIIT Forge', 'Iron Temple', 'Flow State', 'Velocity Cycle', 'Combat Ready', 'Recover & Reset', "I'm not sure yet"].map((c) => (
-                        <option key={c} value={c} className="bg-[#0E1118]">{c}</option>
+                        <option key={c} value={c} className="bg-[#0C1228]">{c}</option>
                       ))}
                     </select>
                   </div>

@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{ background: '#06080F' }} className="border-t border-white/[0.06]">
+    <footer style={{ background: '#060B18' }} className="border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 py-16 sm:py-20">
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-14">
@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black text-[14px] text-[#06080F]"
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black text-[14px] text-[#060B18]"
                 style={{ background: '#C8FF00' }}>
                 AX
               </div>

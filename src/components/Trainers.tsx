@@ -2,7 +2,7 @@ import { trainers } from '@/lib/data';
 
 export default function Trainers() {
   return (
-    <section id="trainers" className="py-24 sm:py-32" style={{ background: '#06080F' }}>
+    <section id="trainers" className="py-24 sm:py-32" style={{ background: '#060B18' }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
 
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 sm:mb-16">
@@ -21,7 +21,7 @@ export default function Trainers() {
           {trainers.map((trainer) => (
             <div key={trainer.name}
               className="group rounded-2xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 hover:-translate-y-1"
-              style={{ background: '#0E1118' }}>
+              style={{ background: '#0C1228' }}>
 
               {/* Avatar area */}
               <div className="h-52 relative flex items-center justify-center" style={{ background: trainer.gradient }}>

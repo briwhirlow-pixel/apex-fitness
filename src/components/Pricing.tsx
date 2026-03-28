@@ -2,7 +2,7 @@ import { pricingTiers } from '@/lib/data';
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 sm:py-32" style={{ background: '#06080F' }}>
+    <section id="pricing" className="py-24 sm:py-32" style={{ background: '#060B18' }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
 
         <div className="text-center mb-12 sm:mb-16">
@@ -23,12 +23,12 @@ export default function Pricing() {
                   ? 'border-[#C8FF00]/40 scale-[1.02]'
                   : 'border-white/[0.06] hover:border-white/15'
               }`}
-              style={{ background: tier.highlighted ? '#0F1A00' : '#0E1118' }}>
+              style={{ background: tier.highlighted ? '#0A1535' : '#0C1228' }}>
 
               {tier.badge && (
                 <span className={`absolute -top-3.5 left-6 text-[11px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase ${
                   tier.highlighted
-                    ? 'bg-[#C8FF00] text-[#06080F]'
+                    ? 'bg-[#C8FF00] text-[#060B18]'
                     : 'bg-white/10 text-white/60'
                 }`}>
                   {tier.badge}
@@ -52,7 +52,7 @@ export default function Pricing() {
                   <li key={f} className="flex items-start gap-3 text-[13px]">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{ background: tier.highlighted ? '#C8FF00' : 'rgba(200,255,0,0.12)' }}>
-                      <svg width="8" height="8" fill="none" stroke={tier.highlighted ? '#06080F' : '#C8FF00'} viewBox="0 0 24 24">
+                      <svg width="8" height="8" fill="none" stroke={tier.highlighted ? '#060B18' : '#C8FF00'} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
                       </svg>
                     </div>
@@ -64,7 +64,7 @@ export default function Pricing() {
               <a href="/contact"
                 className={`block text-center py-4 rounded-full font-black text-[14px] transition-all hover:scale-[1.02] active:scale-[0.98] ${
                   tier.highlighted
-                    ? 'bg-[#C8FF00] text-[#06080F] hover:bg-white'
+                    ? 'bg-[#C8FF00] text-[#060B18] hover:bg-white'
                     : 'bg-white/[0.06] text-white hover:bg-white/10 border border-white/10'
                 }`}>
                 {tier.cta} →

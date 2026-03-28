@@ -2,7 +2,7 @@ import { features } from '@/lib/data';
 
 export default function WhyApex() {
   return (
-    <section id="about" className="py-24 sm:py-32" style={{ background: '#0A0C14' }}>
+    <section id="about" className="py-24 sm:py-32" style={{ background: '#080E1E' }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -39,7 +39,7 @@ export default function WhyApex() {
             {features.map((f) => (
               <div key={f.title}
                 className="rounded-2xl p-6 border border-white/[0.06] hover:border-white/15 transition-all duration-300 group"
-                style={{ background: '#0E1118' }}>
+                style={{ background: '#0C1228' }}>
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4" style={{ background: 'rgba(200,255,0,0.08)' }}>
                   {f.icon}
                 </div>

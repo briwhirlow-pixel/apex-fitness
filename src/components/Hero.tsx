@@ -7,7 +7,7 @@ export default function Hero() {
   useEffect(() => { setLoaded(true); }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden" style={{ background: '#06080F' }}>
+    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden" style={{ background: '#060B18' }}>
 
       {/* Background orbs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -44,7 +44,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <a href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#C8FF00] text-[#06080F] font-black px-7 py-4 rounded-full text-[15px] hover:bg-white transition-colors hover:scale-[1.03] active:scale-[0.97]">
+              className="inline-flex items-center justify-center gap-2 bg-[#C8FF00] text-[#060B18] font-black px-7 py-4 rounded-full text-[15px] hover:bg-white transition-colors hover:scale-[1.03] active:scale-[0.97]">
               Claim Free Trial →
             </a>
             <a href="/classes"

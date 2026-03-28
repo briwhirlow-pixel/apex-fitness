@@ -13,9 +13,15 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #06080F;
+  background: #060B18;
   color: white;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--font-barlow), sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  letter-spacing: -0.01em;
 }
 
 a, button { touch-action: manipulation; }

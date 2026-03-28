@@ -11,7 +11,7 @@ const categories = ['All', 'HIIT', 'Strength', 'Yoga', 'Cycling', 'Boxing', 'Rec
 
 export default function ClassesPage() {
   return (
-    <div style={{ background: '#06080F' }} className="min-h-screen">
+    <div style={{ background: '#060B18' }} className="min-h-screen">
 
       {/* Header */}
       <section className="pt-32 pb-16 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto">
@@ -45,7 +45,7 @@ export default function ClassesPage() {
           {classes.map((cls) => (
             <div key={cls.id}
               className="rounded-2xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 hover:-translate-y-1"
-              style={{ background: '#0E1118' }}>
+              style={{ background: '#0C1228' }}>
 
               {/* Visual header */}
               <div className="h-44 relative flex items-end p-5" style={{ background: cls.gradient }}>

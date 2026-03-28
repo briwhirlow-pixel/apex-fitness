@@ -25,7 +25,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#06080F]/90 backdrop-blur-xl border-b border-white/[0.06]' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#060B18]/95 backdrop-blur-xl border-b border-white/[0.06]' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 h-16 sm:h-18 flex items-center justify-between">
 
         {/* Logo */}
@@ -40,7 +40,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a key={l.label} href={l.href}
-              className="text-white/50 hover:text-white text-[14px] font-medium transition-colors tracking-wide">
+              className="text-white/50 hover:text-white text-[12px] font-bold transition-colors tracking-[0.12em] uppercase">
               {l.label}
             </a>
           ))}
@@ -69,7 +69,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden fixed inset-0 top-16 bg-[#06080F] z-40 flex flex-col p-8 gap-6">
+        <div className="md:hidden fixed inset-0 top-16 bg-[#060B18] z-40 flex flex-col p-8 gap-6">
           {links.map((l) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}
               className="text-white text-[24px] font-black tracking-tight hover:text-[#C8FF00] transition-colors">
