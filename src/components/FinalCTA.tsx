@@ -20,11 +20,11 @@ export default function FinalCTA() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#06080F] text-white font-black px-8 py-4 rounded-full text-[15px] hover:bg-[#1a1a2e] transition-colors hover:scale-[1.03] active:scale-[0.97]">
+                className="inline-flex items-center justify-center gap-2 bg-[#060B18] text-white font-black px-8 py-4 rounded-lg text-[15px] hover:bg-[#0C1228] transition-colors hover:scale-[1.03] active:scale-[0.97]">
                 Claim My Free Class →
               </a>
               <a href="/classes"
-                className="inline-flex items-center justify-center gap-2 text-[#06080F] font-bold px-8 py-4 rounded-full border-2 border-[#06080F]/20 text-[15px] hover:border-[#06080F]/50 transition-colors">
+                className="inline-flex items-center justify-center gap-2 text-[#06080F] font-bold px-8 py-4 rounded-lg border-2 border-[#06080F]/20 text-[15px] hover:border-[#06080F]/50 transition-colors">
                 Browse Schedule
               </a>
             </div>

@@ -44,11 +44,11 @@ export default function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <a href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#C8FF00] text-[#060B18] font-black px-7 py-4 rounded-full text-[15px] hover:bg-white transition-colors hover:scale-[1.03] active:scale-[0.97]">
+              className="inline-flex items-center justify-center gap-2 bg-[#C8FF00] text-[#060B18] font-black px-7 py-4 rounded-lg text-[15px] hover:bg-white transition-colors hover:scale-[1.03] active:scale-[0.97]">
               Claim Free Trial →
             </a>
             <a href="/classes"
-              className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-4 rounded-full border border-white/15 text-[15px] hover:border-white/40 transition-colors">
+              className="inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-4 rounded-lg border border-white/15 text-[15px] hover:border-white/40 transition-colors">
               View Schedule
             </a>
           </div>

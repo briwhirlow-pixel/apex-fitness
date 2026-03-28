@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "APEX",
   fullName: "APEX Performance Studio",
   tagline: "Where limits become starting points.",
-  address: "1240 N Milwaukee Ave, Chicago, IL 60622",
-  phone: "(312) 555-0198",
-  email: "hello@apexperformance.com",
+  address: "2847 N Clark St, Chicago, IL 60657",
+  phone: "(312) 555-0174",
+  email: "hello@apexperformancestudio.com",
   instagram: "#",
   hours: {
     weekday: "5:00 AM – 10:00 PM",

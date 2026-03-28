@@ -52,7 +52,7 @@ export default function Navbar() {
             Sign in
           </a>
           <a href="/contact"
-            className="bg-[#C8FF00] text-[#06080F] font-bold px-5 py-2.5 rounded-full text-[13px] hover:bg-white transition-colors">
+            className="bg-[#C8FF00] text-[#06080F] font-bold px-5 py-2.5 rounded-lg text-[13px] hover:bg-white transition-colors">
             Free Trial Class →
           </a>
         </div>
@@ -77,7 +77,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="/contact" onClick={() => setOpen(false)}
-            className="mt-4 inline-block bg-[#C8FF00] text-[#06080F] font-black px-8 py-4 rounded-full text-[16px] text-center">
+            className="mt-4 inline-block bg-[#C8FF00] text-[#06080F] font-black px-8 py-4 rounded-lg text-[16px] text-center">
             Free Trial Class →
           </a>
         </div>

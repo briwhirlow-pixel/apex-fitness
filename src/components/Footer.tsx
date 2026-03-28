@@ -1,3 +1,5 @@
+import { siteConfig } from '@/lib/data';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -77,8 +79,8 @@ export default function Footer() {
             <div className="space-y-4">
               <div>
                 <p className="text-white/60 text-[13px] leading-relaxed">
-                  1847 N. Milwaukee Ave<br />
-                  Chicago, IL 60647
+                  {siteConfig.address.split(',').slice(0, 1)}<br />
+                  {siteConfig.address.split(',').slice(1).join(',').trim()}
                 </p>
               </div>
               <div>
@@ -87,8 +89,8 @@ export default function Footer() {
                 <p className="text-white/50 text-[13px]">Sat–Sun: 7am – 6pm</p>
               </div>
               <div>
-                <a href="mailto:hello@apexperformance.com" className="text-white/50 text-[13px] hover:text-white transition-colors">
-                  hello@apexperformance.com
+                <a href={`mailto:${siteConfig.email}`} className="text-white/50 text-[13px] hover:text-white transition-colors">
+                  {siteConfig.email}
                 </a>
               </div>
               <a href="/contact"
