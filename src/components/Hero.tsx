@@ -20,15 +20,16 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 md:px-12 w-full pt-36 pb-0">
 
         {/* Eyebrow */}
-        <div className={`flex items-center gap-3 mb-8 transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`flex items-center justify-center gap-3 mb-8 transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <span className="w-8 h-[2px]" style={{ background: '#C8FF00' }} />
           <span className="text-[11px] font-bold tracking-[0.25em] uppercase" style={{ color: '#C8FF00' }}>
             Chicago's #1 Performance Studio
           </span>
+          <span className="w-8 h-[2px]" style={{ background: '#C8FF00' }} />
         </div>
 
         {/* Massive headline */}
-        <h1 className={`font-black uppercase leading-[0.88] text-white mb-10 transition-opacity duration-700 delay-100 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        <h1 className={`font-black uppercase leading-[0.88] text-white text-center mb-10 transition-opacity duration-700 delay-100 ${loaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ fontSize: 'clamp(68px, 13vw, 172px)' }}>
           BUILT<br />
           FOR<br />
@@ -37,11 +38,11 @@ export default function Hero() {
         </h1>
 
         {/* Sub + CTAs */}
-        <div className={`flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12 mb-16 transition-opacity duration-700 delay-200 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-white/50 text-[16px] sm:text-[17px] leading-relaxed max-w-xs">
+        <div className={`flex flex-col items-center gap-6 mb-16 text-center transition-opacity duration-700 delay-200 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+          <p className="text-white/50 text-[16px] sm:text-[17px] leading-relaxed max-w-sm">
             HIIT, strength, yoga, cycling, and recovery — all under one roof. First class is on us.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <div className="flex flex-col sm:flex-row gap-3">
             <a href="/contact"
               className="inline-flex items-center justify-center gap-2 font-black px-8 py-4 rounded-lg text-[15px] transition-all hover:scale-[1.02] active:scale-[0.98]"
               style={{ background: '#C8FF00', color: '#0A0A0A' }}>
