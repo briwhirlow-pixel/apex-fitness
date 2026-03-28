@@ -52,9 +52,6 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="/contact" className={`text-[13px] font-medium transition-colors ${
-            dark ? 'text-white/50 hover:text-white' : 'text-[#0A0A0A]/40 hover:text-[#0A0A0A]'
-          }`}>Sign in</a>
           <a href="/contact"
             className="bg-[#C8FF00] text-[#0A0A0A] font-bold px-5 py-2.5 rounded-lg text-[13px] hover:opacity-90 transition-opacity">
             Free Trial →
