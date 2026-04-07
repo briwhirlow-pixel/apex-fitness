@@ -24,7 +24,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-px bg-white/[0.06]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.06]">
           {testimonials.map((t) => (
             <div key={t.name} className="bg-black p-8 flex flex-col gap-6 hover:bg-[#0A0A0A] transition-colors">
 

@@ -20,12 +20,12 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-5 sm:gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {pricingTiers.map((tier) => (
             <div key={tier.name}
               className={`relative flex flex-col border transition-all duration-300 ${
                 tier.highlighted
-                  ? 'border-black scale-[1.02]'
+                  ? 'border-black sm:scale-[1.02]'
                   : 'border-black/[0.1] hover:border-black/25'
               }`}
               style={{ background: tier.highlighted ? '#0A0A0A' : '#FFFFFF' }}>

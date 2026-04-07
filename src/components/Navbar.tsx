@@ -58,29 +58,29 @@ export default function Navbar() {
           </a>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden p-2 -mr-2" aria-label="Menu">
-          <div className="w-5 flex flex-col gap-1.5">
+        <button onClick={() => setOpen(!open)} className="md:hidden p-3 -mr-3" aria-label="Menu">
+          <div className="w-5 flex flex-col gap-[5px]">
             {[
-              open ? 'rotate-45 translate-y-2' : '',
+              open ? 'rotate-45 translate-y-[9px]' : '',
               open ? 'opacity-0' : '',
-              open ? '-rotate-45 -translate-y-2' : '',
+              open ? '-rotate-45 -translate-y-[9px]' : '',
             ].map((cls, i) => (
-              <span key={i} className={`h-0.5 rounded transition-all ${cls} ${dark ? 'bg-white' : 'bg-[#0A0A0A]'}`} />
+              <span key={i} className={`h-[2px] rounded transition-all ${cls} ${dark ? 'bg-white' : 'bg-[#0A0A0A]'}`} />
             ))}
           </div>
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden fixed inset-0 top-16 bg-white z-40 flex flex-col p-8 gap-5 border-t border-black/[0.06]">
+        <div className="md:hidden fixed inset-0 top-16 bg-white z-40 flex flex-col p-6 sm:p-8 gap-4 border-t border-black/[0.06]">
           {links.map((l) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}
-              className="text-[#0A0A0A] text-[28px] font-black tracking-tight uppercase hover:text-[#C8FF00] transition-colors border-b border-black/[0.06] pb-5">
+              className="text-[#0A0A0A] text-[22px] sm:text-[28px] font-black tracking-tight uppercase hover:text-[#C8FF00] transition-colors border-b border-black/[0.06] pb-4">
               {l.label}
             </a>
           ))}
           <a href="/contact" onClick={() => setOpen(false)}
-            className="mt-2 inline-block bg-[#C8FF00] text-[#0A0A0A] font-black px-8 py-4 rounded-lg text-[16px] text-center">
+            className="mt-2 inline-block bg-[#C8FF00] text-[#0A0A0A] font-black px-8 py-4 rounded-lg text-[15px] sm:text-[16px] text-center">
             Claim Free Trial →
           </a>
         </div>

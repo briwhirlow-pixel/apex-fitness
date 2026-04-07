@@ -28,11 +28,11 @@ export default function Classes() {
           </a>
         </div>
 
-        <div className="-mx-5 sm:mx-0 overflow-x-auto sm:overflow-visible">
-          <div className="flex sm:grid sm:grid-cols-3 gap-4 px-5 sm:px-0 pb-2 sm:pb-0">
+        <div className="-mx-5 sm:mx-0 overflow-x-auto sm:overflow-visible scroll-smooth">
+          <div className="flex sm:grid sm:grid-cols-3 gap-4 px-5 sm:px-0 pb-4 sm:pb-0 snap-x snap-mandatory sm:snap-none">
             {classes.map((cls) => (
               <div key={cls.id}
-                className="flex-shrink-0 w-[300px] sm:w-auto group rounded-xl overflow-hidden border border-black/[0.08] hover:border-black/20 bg-white transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                className="flex-shrink-0 w-[80vw] max-w-[300px] sm:w-auto snap-start group rounded-xl overflow-hidden border border-black/[0.08] hover:border-black/20 bg-white transition-all duration-300 hover:-translate-y-1 cursor-pointer">
 
                 {/* Visual header */}
                 <div className="h-40 relative overflow-hidden" style={{ background: cls.gradient }}>

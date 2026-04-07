@@ -32,7 +32,7 @@ export default function WhyApex() {
           </div>
 
           {/* Right — feature grid */}
-          <div className="grid sm:grid-cols-2 gap-px bg-white/[0.06]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.06]">
             {features.map((f) => (
               <div key={f.title} className="p-7 bg-black hover:bg-[#111] transition-colors group">
                 <div className="text-2xl mb-5">{f.icon}</div>

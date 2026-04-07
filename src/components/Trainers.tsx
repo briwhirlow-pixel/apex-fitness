@@ -20,7 +20,7 @@ export default function Trainers() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {trainers.map((trainer) => (
             <div key={trainer.name}
               className="group bg-white border border-black/[0.08] hover:border-black/20 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
