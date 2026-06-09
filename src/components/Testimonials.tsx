@@ -2,48 +2,38 @@ import { testimonials } from '@/lib/data';
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-[color:var(--color-bone-soft)]">
-      <div className="max-w-[1170px] mx-auto px-5 sm:px-8">
+    <section className="py-20 sm:py-24 bg-[#f7f7f7]">
+      <div className="max-w-[1170px] mx-auto px-6">
 
-        {/* Section heading */}
-        <div className="text-center mb-14">
-          <h2 className="font-[family-name:var(--font-heading)] text-[clamp(32px,5vw,48px)] font-bold uppercase tracking-wide text-[color:var(--color-ink)] mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,40px)] font-semibold uppercase tracking-[0.03em] text-[#1a1a1a] mb-4">
             What Our Members Say
           </h2>
-          <div className="w-16 h-1 bg-[color:var(--color-ember)] mx-auto rounded-full mb-5" />
-          <div className="flex items-center justify-center gap-3">
-            <span className="font-[family-name:var(--font-heading)] text-[36px] font-bold text-[color:var(--color-ink)]">4.9</span>
-            <div>
-              <div className="text-yellow-400 text-[18px]">★★★★★</div>
-              <p className="text-[color:var(--color-stone)] text-[13px]">412 reviews on Google</p>
-            </div>
-          </div>
+          <p className="text-[#555] text-[16px] leading-[1.7]">
+            Real results from real members. 4.9 stars across 412 Google reviews.
+          </p>
         </div>
 
-        {/* Testimonial cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-xl p-7 shadow-md hover:shadow-lg transition-shadow"
+              className="bg-white rounded-lg p-7 shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
             >
-              {/* Quote icon */}
-              <div className="text-[color:var(--color-ember)] text-[36px] leading-none mb-3">&ldquo;</div>
+              <div className="text-[#e41313] text-[14px] mb-3 tracking-wider">★★★★★</div>
 
-              <p className="text-[color:var(--color-ink)] text-[15px] leading-relaxed mb-6">
-                {t.text}
+              <p className="text-[#333] text-[15px] leading-[1.7] mb-6 italic">
+                &ldquo;{t.text}&rdquo;
               </p>
 
-              {/* Result badge */}
-              <div className="bg-[color:var(--color-ember)]/10 text-[color:var(--color-ember)] text-[13px] font-semibold rounded-full px-4 py-1.5 inline-block mb-5">
-                {t.highlight}
-              </div>
-
-              {/* Stars + name */}
-              <div className="border-t border-gray-100 pt-4">
-                <div className="text-yellow-400 text-[14px] mb-1">★★★★★</div>
-                <p className="text-[color:var(--color-ink)] text-[15px] font-semibold">{t.name}</p>
-                <p className="text-[color:var(--color-stone)] text-[13px]">{t.class} · {t.date}</p>
+              <div className="flex items-center justify-between border-t border-[#eee] pt-4">
+                <div>
+                  <p className="text-[#1a1a1a] text-[15px] font-semibold">{t.name}</p>
+                  <p className="text-[#999] text-[13px]">{t.class}</p>
+                </div>
+                <span className="text-[#e41313] text-[13px] font-semibold">
+                  {t.highlight}
+                </span>
               </div>
             </div>
           ))}
