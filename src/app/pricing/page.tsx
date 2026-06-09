@@ -1,17 +1,17 @@
-import { pricingTiers } from '@/lib/data';
+import Pricing from '@/components/Pricing';
 
 const faqs = [
   {
-    q: "Is there really a free first class?",
+    q: "Is there really a free first hour?",
     a: "Yes. Walk in, take any class on the schedule, meet your coach. If you don't love it, you owe us nothing and walk out with no obligation.",
   },
   {
     q: "Can I cancel my membership anytime?",
-    a: "Monthly members can cancel any time with 30 days notice — no penalty, no questions. Annual members can cancel with a prorated refund in the first 30 days.",
+    a: "Monthly members can cancel any time with thirty days' notice — no penalty, no questions. Annual members can cancel with a prorated refund in the first thirty days.",
   },
   {
-    q: "What's the 30-Day Results Guarantee?",
-    a: "If you attend at least 8 classes in your first 30 days and don't see measurable progress, we'll refund your full first month. We track everything so you can prove it.",
+    q: "What's the 30-day floor?",
+    a: "If you attend at least eight classes in your first thirty days and don't see measurable progress, we refund your full first month. We track every session so the case is made on numbers, not vibes.",
   },
   {
     q: "Are there joining fees?",
@@ -19,123 +19,121 @@ const faqs = [
   },
   {
     q: "Can I pause my membership?",
-    a: "Monthly members can pause for up to 60 days per year — useful for travel or injury. Just let the front desk know.",
+    a: "Monthly members can pause for up to ninety days a year — useful for travel or injury. Just let the front desk know in advance.",
   },
   {
     q: "What does the free guest pass cover?",
-    a: "Your guest gets access to any single class of their choice. It's a great way to bring a friend and split the motivation.",
+    a: "Your guest gets access to any single class of their choice. A clean way to bring someone in without putting them on the spot.",
   },
 ];
 
 export default function PricingPage() {
   return (
-    <div style={{ background: '#0A0A0A' }} className="min-h-screen">
+    <div className="bg-[color:var(--color-bone)] min-h-screen">
 
       {/* Header */}
-      <section className="pt-32 pb-16 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto text-center">
-        <p className="text-[#C8FF00] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Membership</p>
-        <h1 className="font-black leading-tight tracking-tighter text-white mb-6" style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}>
-          Simple pricing.<br />No surprises.
-        </h1>
-        <p className="text-white/40 text-[16px] leading-relaxed max-w-lg mx-auto">
-          No contracts. No joining fees. No commitment required to try. Your first class is always free.
-        </p>
-      </section>
-
-      {/* Pricing cards */}
-      <section className="px-5 sm:px-8 md:px-12 max-w-5xl mx-auto mb-20">
-        <div className="grid sm:grid-cols-3 gap-5 sm:gap-6 items-start">
-          {pricingTiers.map((tier) => (
-            <div key={tier.name}
-              className={`relative rounded-2xl p-7 sm:p-8 flex flex-col border transition-all duration-300 ${
-                tier.highlighted
-                  ? 'border-[#C8FF00]/40 scale-[1.02]'
-                  : 'border-white/[0.06] hover:border-white/15'
-              }`}
-              style={{ background: tier.highlighted ? 'rgba(200,255,0,0.06)' : 'rgba(255,255,255,0.04)' }}>
-
-              {tier.badge && (
-                <span className={`absolute -top-3.5 left-6 text-[11px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase ${
-                  tier.highlighted
-                    ? 'bg-[#C8FF00] text-[#0A0A0A]'
-                    : 'bg-white/10 text-white/60'
-                }`}>
-                  {tier.badge}
-                </span>
-              )}
-
-              <div className="mb-6">
-                <p className="text-white/40 text-[12px] font-bold tracking-widest uppercase mb-3">{tier.name}</p>
-                <div className="flex items-end gap-1 mb-2">
-                  <span className={`font-black leading-none tracking-tighter ${tier.highlighted ? 'text-[#C8FF00]' : 'text-white'}`}
-                    style={{ fontSize: 'clamp(40px, 5vw, 56px)' }}>
-                    {tier.price}
-                  </span>
-                  <span className="text-white/30 text-[14px] mb-2">/{tier.period.replace('per ', '')}</span>
-                </div>
-                <p className="text-white/40 text-[13px] leading-relaxed">{tier.description}</p>
-              </div>
-
-              <ul className="space-y-3 flex-1 mb-8">
-                {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-[13px]">
-                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: tier.highlighted ? '#C8FF00' : 'rgba(200,255,0,0.12)' }}>
-                      <svg width="8" height="8" fill="none" stroke={tier.highlighted ? '#0A0A0A' : '#C8FF00'} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
-                      </svg>
-                    </div>
-                    <span className="text-white/60">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a href="/contact"
-                className={`block text-center py-4 rounded-lg font-black text-[14px] transition-all hover:scale-[1.02] active:scale-[0.98] ${
-                  tier.highlighted
-                    ? 'bg-[#C8FF00] text-[#0A0A0A] hover:bg-white'
-                    : 'bg-white/[0.06] text-white hover:bg-white/10 border border-white/10'
-                }`}>
-                {tier.cta} →
-              </a>
-            </div>
-          ))}
+      <section className="relative max-w-[1400px] mx-auto px-6 sm:px-10 pt-32 sm:pt-36 pb-12">
+        <div className="h-px bg-[color:var(--color-ink)]/25" />
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-1 py-3 font-mono text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-ink)]/55">
+          <span className="md:col-span-3">Apex / Chicago</span>
+          <span className="md:col-span-3">Section III — Rate Card</span>
+          <span className="hidden md:inline md:col-span-3">Valid through 12.31.26</span>
+          <span className="md:col-span-3 text-right">No joining fee</span>
         </div>
+        <div className="h-px bg-[color:var(--color-ink)]/25" />
 
-        {/* Trust strip */}
-        <div className="mt-10 sm:mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-center">
-          {['No joining fee', 'Cancel anytime', 'First class free', 'No contracts', '30-day guarantee'].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-white/35 text-[13px]">
-              <svg width="14" height="14" fill="none" stroke="#C8FF00" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
-              </svg>
-              {item}
+        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mt-14">
+          <div className="col-span-12 lg:col-span-8">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-5">
+              Membership
             </div>
-          ))}
+            <h1
+              className="serif-display tracking-[-0.028em] leading-[0.94] text-[color:var(--color-ink)]"
+              style={{ fontSize: 'clamp(56px, 10vw, 152px)', fontWeight: 500 }}
+            >
+              Three rates.<br />
+              <span className="serif-wonk">No surprises</span>.
+            </h1>
+          </div>
+          <div className="col-span-12 lg:col-span-4 lg:pt-6 mt-6 lg:mt-0">
+            <p className="font-sans text-[color:var(--color-ink-soft)] text-[15px] sm:text-[16px] leading-[1.6] max-w-sm">
+              The drop-in is for the curious. The monthly is for the disciplined.
+              The annual is for the converted. Cancel any month with notice.
+            </p>
+          </div>
         </div>
       </section>
+
+      {/* Reuse the Pricing component as the rate-card body */}
+      <Pricing />
 
       {/* FAQ */}
-      <section className="px-5 sm:px-8 md:px-12 max-w-3xl mx-auto pb-24">
-        <h2 className="font-black text-white text-center mb-12 tracking-tight" style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}>
-          Common questions
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((faq) => (
-            <div key={faq.q} className="rounded-2xl p-6 border border-white/[0.06]" style={{ background: 'rgba(255,255,255,0.04)' }}>
-              <p className="text-white font-bold text-[15px] mb-2">{faq.q}</p>
-              <p className="text-white/45 text-[14px] leading-relaxed">{faq.a}</p>
+      <section className="max-w-[1400px] mx-auto px-6 sm:px-10 pb-24 sm:pb-32">
+
+        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 items-end mb-12 sm:mb-16">
+          <div className="col-span-12 lg:col-span-8">
+            <div className="flex items-center gap-4 mb-5">
+              <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)]">
+                § 07 — Notes &amp; Footnotes
+              </span>
+              <span className="h-px flex-1 bg-[color:var(--color-ink)]/20" />
             </div>
-          ))}
+            <h2
+              className="serif-display tracking-[-0.025em] leading-[0.95] text-[color:var(--color-ink)]"
+              style={{ fontSize: 'clamp(40px, 6vw, 80px)', fontWeight: 500 }}
+            >
+              The reasonable <span className="serif-wonk">questions</span>.
+            </h2>
+          </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-white/40 text-[15px] mb-6">Still have questions? We're happy to help.</p>
-          <a href="/contact"
-            className="inline-flex items-center gap-2 font-black px-10 py-4 rounded-lg text-[#0A0A0A] text-[15px] hover:opacity-90 transition-all hover:scale-[1.03] active:scale-[0.97]"
-            style={{ background: '#C8FF00' }}>
-            Talk to Us →
-          </a>
+        <div className="h-px bg-[color:var(--color-ink)]/25" />
+        {faqs.map((faq, i) => (
+          <details
+            key={faq.q}
+            className="group border-b border-[color:var(--color-ink)]/15 py-6 sm:py-8"
+          >
+            <summary className="grid grid-cols-12 gap-x-6 sm:gap-x-8 items-baseline cursor-pointer list-none">
+              <div className="col-span-2 sm:col-span-1 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
+                0{i + 1}
+              </div>
+              <h3
+                className="col-span-9 sm:col-span-10 serif-display leading-[1.18] tracking-[-0.015em] text-[color:var(--color-ink)] group-open:text-[color:var(--color-ember)] transition-colors"
+                style={{ fontSize: 'clamp(20px, 2.4vw, 30px)', fontWeight: 500 }}
+              >
+                {faq.q}
+              </h3>
+              <div className="col-span-1 font-mono text-[14px] text-[color:var(--color-ink)]/55 group-open:rotate-45 transition-transform text-right">
+                +
+              </div>
+            </summary>
+            <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mt-5">
+              <div className="hidden sm:block col-span-1" />
+              <p className="col-span-12 sm:col-span-10 font-sans text-[color:var(--color-ink-soft)] text-[15px] leading-[1.65] max-w-[58ch]">
+                {faq.a}
+              </p>
+            </div>
+          </details>
+        ))}
+
+        <div className="mt-16 grid grid-cols-12 gap-x-6 sm:gap-x-8 items-end pt-8 border-t border-[color:var(--color-ink)]/15">
+          <div className="col-span-12 sm:col-span-8">
+            <p
+              className="serif-display text-[color:var(--color-ink)] leading-[1.2] tracking-[-0.012em]"
+              style={{ fontSize: 'clamp(22px, 2.6vw, 32px)', fontWeight: 500 }}
+            >
+              Still have one we didn&apos;t answer? Ask the front desk in person.
+            </p>
+          </div>
+          <div className="col-span-12 sm:col-span-4 mt-6 sm:mt-0 sm:text-right">
+            <a
+              href="/contact"
+              className="group inline-flex items-center gap-3 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
+            >
+              Send a note
+              <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-12" />
+            </a>
+          </div>
         </div>
       </section>
     </div>

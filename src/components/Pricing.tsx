@@ -2,92 +2,150 @@ import { pricingTiers } from '@/lib/data';
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 sm:py-32" style={{ background: '#F2F2F0' }}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+    <section id="pricing" className="relative py-28 sm:py-36 overflow-hidden bg-[color:var(--color-bone)]">
 
-        <div className="mb-14 sm:mb-20">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-6 h-[2px] bg-[#C8FF00]" />
-            <p className="text-[#0A0A0A]/40 text-[11px] font-bold tracking-[0.2em] uppercase">Membership</p>
-          </div>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <h2 className="font-black uppercase leading-[0.88] text-[#0A0A0A]" style={{ fontSize: 'clamp(40px, 5vw, 72px)' }}>
-              Simple pricing.<br />No surprises.
+      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10">
+
+        {/* Masthead */}
+        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 items-end mb-14 sm:mb-20">
+          <div className="col-span-12 lg:col-span-8">
+            <div className="flex items-center gap-4 mb-5">
+              <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)]">
+                § 06 — The Rate Card
+              </span>
+              <span className="h-px flex-1 bg-[color:var(--color-ink)]/20" />
+            </div>
+            <h2
+              className="serif-display tracking-[-0.025em] leading-[0.95] text-[color:var(--color-ink)]"
+              style={{ fontSize: 'clamp(46px, 7.5vw, 108px)', fontWeight: 500 }}
+            >
+              No tiers,<br />
+              just <span className="serif-wonk">three</span> ways in.
             </h2>
-            <p className="text-[#0A0A0A]/45 text-[15px] max-w-xs leading-relaxed">
-              Cancel anytime. No contracts. No joining fees. Your first class is always free.
+          </div>
+          <div className="col-span-12 lg:col-span-4 lg:pl-12 mt-4 lg:mt-0">
+            <p className="font-sans text-[color:var(--color-ink-soft)] text-[15px] leading-[1.6] max-w-md">
+              No joining fee. No contract. No quiet auto-bumps. Cancel any month
+              with notice, take ninety days for an injury, return when you&apos;re ready.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 items-stretch">
-          {pricingTiers.map((tier) => (
-            <div key={tier.name}
-              className={`relative flex flex-col border transition-all duration-300 ${
-                tier.highlighted
-                  ? 'border-black sm:scale-[1.02]'
-                  : 'border-black/[0.1] hover:border-black/25'
-              }`}
-              style={{ background: tier.highlighted ? '#0A0A0A' : '#FFFFFF' }}>
+        {/* THE TABLE */}
+        <div className="relative">
+          {/* Top rule */}
+          <div className="h-px bg-[color:var(--color-ink)]/30" />
 
-              {tier.badge && (
-                <span className="absolute -top-3.5 left-5 text-[11px] font-black px-4 py-1.5 tracking-widest uppercase"
-                  style={{ background: '#C8FF00', color: '#0A0A0A' }}>
+          {/* Headers */}
+          <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 py-4 border-b border-[color:var(--color-ink)]/15">
+            <div className="hidden lg:block col-span-3 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
+              Rate
+            </div>
+            <div className="hidden lg:block col-span-3 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
+              Price
+            </div>
+            <div className="hidden lg:block col-span-4 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
+              What it includes
+            </div>
+            <div className="hidden lg:block col-span-2 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 text-right">
+              Action
+            </div>
+          </div>
+
+          {/* ROWS */}
+          {pricingTiers.map((tier, i) => (
+            <div
+              key={tier.name}
+              className={`relative grid grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-6 py-10 sm:py-14 border-b border-[color:var(--color-ink)]/15 ${
+                tier.highlighted ? 'bg-[color:var(--color-ink)] text-[color:var(--color-bone)] -mx-6 sm:-mx-10 px-6 sm:px-10' : ''
+              }`}
+            >
+              {tier.highlighted && tier.badge && (
+                <span className="absolute -top-px left-6 sm:left-10 px-3 py-1 font-mono text-[10px] tracking-[0.22em] uppercase bg-[color:var(--color-ember)] text-[color:var(--color-bone)]">
                   {tier.badge}
                 </span>
               )}
 
-              <div className="p-7 sm:p-8 flex flex-col flex-1">
-                <p className={`text-[11px] font-bold tracking-widest uppercase mb-4 ${tier.highlighted ? 'text-white/40' : 'text-[#0A0A0A]/40'}`}>
-                  {tier.name}
-                </p>
-                <div className="flex items-end gap-1 mb-2">
-                  <span className={`font-black leading-none ${tier.highlighted ? 'text-[#C8FF00]' : 'text-[#0A0A0A]'}`}
-                    style={{ fontSize: 'clamp(40px, 5vw, 60px)' }}>
+              {/* Rate name + index */}
+              <div className="col-span-12 lg:col-span-3">
+                <div className={`font-mono text-[10px] tracking-[0.22em] uppercase mb-2 ${tier.highlighted ? 'text-[color:var(--color-ember)]' : 'text-[color:var(--color-ink)]/50'}`}>
+                  Nº 0{i + 1}
+                </div>
+                <h3
+                  className={`serif-display leading-[0.95] tracking-[-0.02em] ${tier.highlighted ? 'text-[color:var(--color-bone)]' : 'text-[color:var(--color-ink)]'}`}
+                  style={{ fontSize: 'clamp(36px, 4.5vw, 60px)', fontWeight: 500 }}
+                >
+                  {tier.name}<span className="text-[color:var(--color-ember)]">.</span>
+                </h3>
+                {!tier.highlighted && tier.badge && (
+                  <div className="mt-3 inline-block font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] border border-[color:var(--color-ember)]/40 px-2.5 py-1">
+                    {tier.badge}
+                  </div>
+                )}
+              </div>
+
+              {/* Price */}
+              <div className="col-span-12 lg:col-span-3">
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className={`serif-display leading-none tracking-[-0.025em] ${tier.highlighted ? 'text-[color:var(--color-ember)]' : 'text-[color:var(--color-ink)]'}`}
+                    style={{ fontSize: 'clamp(48px, 6.5vw, 84px)', fontWeight: 500 }}
+                  >
                     {tier.price}
                   </span>
-                  <span className={`text-[14px] mb-2 ${tier.highlighted ? 'text-white/30' : 'text-[#0A0A0A]/30'}`}>
-                    /{tier.period.replace('per ', '')}
+                  <span className={`font-mono text-[11px] tracking-[0.15em] uppercase ${tier.highlighted ? 'text-[color:var(--color-bone)]/50' : 'text-[color:var(--color-ink)]/45'}`}>
+                    / {tier.period.replace('per ', '')}
                   </span>
                 </div>
-                <p className={`text-[13px] leading-relaxed mb-7 ${tier.highlighted ? 'text-white/40' : 'text-[#0A0A0A]/45'}`}>
+                <p className={`mt-3 font-sans text-[13px] leading-[1.55] max-w-[28ch] ${tier.highlighted ? 'text-[color:var(--color-bone)]/55' : 'text-[color:var(--color-ink-soft)]'}`}>
                   {tier.description}
                 </p>
+              </div>
 
-                <ul className="space-y-3 flex-1 mb-8">
+              {/* Features */}
+              <div className="col-span-12 lg:col-span-4">
+                <ul className="space-y-2.5">
                   {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-[13px]">
-                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" className="flex-shrink-0 mt-0.5" style={{ color: '#C8FF00' }}>
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
-                      </svg>
-                      <span className={tier.highlighted ? 'text-white/60' : 'text-[#0A0A0A]/60'}>{f}</span>
+                    <li key={f} className="flex items-start gap-3 font-sans text-[13.5px] leading-[1.5]">
+                      <span className={`font-mono text-[11px] mt-1 ${tier.highlighted ? 'text-[color:var(--color-ember)]' : 'text-[color:var(--color-ember)]'}`}>—</span>
+                      <span className={tier.highlighted ? 'text-[color:var(--color-bone)]/85' : 'text-[color:var(--color-ink)]/85'}>
+                        {f}
+                      </span>
                     </li>
                   ))}
                 </ul>
+              </div>
 
-                <a href="/contact"
-                  className={`block text-center py-4 font-black text-[14px] tracking-wide uppercase transition-all hover:scale-[1.02] active:scale-[0.98] rounded-lg ${
+              {/* Action */}
+              <div className="col-span-12 lg:col-span-2 lg:text-right flex lg:justify-end items-end">
+                <a
+                  href="/contact"
+                  className={`group inline-flex items-center gap-3 font-mono text-[11px] tracking-[0.22em] uppercase transition-colors ${
                     tier.highlighted
-                      ? 'bg-[#C8FF00] text-[#0A0A0A] hover:opacity-90'
-                      : 'bg-[#0A0A0A] text-white hover:bg-[#222]'
-                  }`}>
-                  {tier.cta} &rarr;
+                      ? 'text-[color:var(--color-bone)] hover:text-[color:var(--color-ember)]'
+                      : 'text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)]'
+                  }`}
+                >
+                  {tier.cta}
+                  <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-12" />
                 </a>
               </div>
             </div>
           ))}
+
+          {/* Footnotes */}
+          <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 pt-8 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
+            <div className="col-span-12 lg:col-span-6 flex flex-wrap items-center gap-x-5 gap-y-1.5">
+              <span>* All rates incl. tax</span>
+              <span>† 30-day money-back floor</span>
+              <span>‡ Member rate locked to start date</span>
+            </div>
+            <div className="col-span-12 lg:col-span-6 lg:text-right mt-2 lg:mt-0">
+              Filed: rate-card.06 · valid through 12.31.26
+            </div>
+          </div>
         </div>
 
-        <div className="mt-10 sm:mt-12 flex flex-wrap gap-x-8 gap-y-3">
-          {['No joining fee', 'Cancel anytime', 'First class free', 'No contracts'].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-[#0A0A0A]/40 text-[13px]">
-              <svg width="14" height="14" fill="none" stroke="#C8FF00" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
-              </svg>
-              {item}
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

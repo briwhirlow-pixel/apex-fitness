@@ -1,35 +1,42 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Fraunces, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const barlow = Barlow({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-barlow",
+  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-fraunces",
+  display: "swap",
 });
 
-const barlowCondensed = Barlow_Condensed({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
-  variable: "--font-barlow-condensed",
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "APEX Performance Studio — Chicago's Premier Fitness & Wellness",
-  description: "Train harder, recover smarter, live better. HIIT, strength, yoga, cycling, and recovery classes in Chicago. Try your first class free.",
+  title: "APEX Performance Studio — Chicago",
+  description: "A performance studio in Lincoln Park. Six disciplines, three coaches, zero shortcuts. Trial pass on the house.",
   openGraph: {
     title: "APEX Performance Studio",
-    description: "Chicago's premier fitness & wellness studio. First class free.",
+    description: "Lincoln Park, Chicago. Trial pass on the house.",
     type: "website",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
-      <body className="text-white antialiased">
+    <html lang="en" className={`${fraunces.variable} ${geist.variable} ${mono.variable}`}>
+      <body className="antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />

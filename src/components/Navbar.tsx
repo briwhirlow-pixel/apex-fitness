@@ -1,22 +1,34 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { siteConfig } from '@/lib/data';
 
 const links = [
-  { label: 'Classes', href: '/classes' },
-  { label: 'Trainers', href: '/#trainers' },
+  { label: 'Disciplines', href: '/classes' },
+  { label: 'Coaches', href: '/#trainers' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'About', href: '/#about' },
+  { label: 'Visit', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [time, setTime] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const tick = () => {
+      const d = new Date();
+      const hh = String(d.getHours()).padStart(2, '0');
+      const mm = String(d.getMinutes()).padStart(2, '0');
+      setTime(`${hh}:${mm} CT`);
+    };
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -24,64 +36,119 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  const dark = !scrolled && !open;
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white border-b border-black/[0.08] shadow-sm' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 h-16 flex items-center justify-between">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background,backdrop-filter,border-color] duration-500 ${
+        scrolled || open
+          ? 'bg-[color:var(--color-bone)]/85 backdrop-blur-md border-b border-[color:var(--color-ink)]/15'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 h-20 flex items-center justify-between gap-6">
 
-        <a href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded flex items-center justify-center font-black text-[13px] text-[#0A0A0A]"
-            style={{ background: '#C8FF00' }}>AX</div>
-          <span className={`font-black text-[17px] tracking-tight transition-colors ${dark ? 'text-white' : 'text-[#0A0A0A]'}`}>
-            {siteConfig.name}
+        {/* WORDMARK — editorial */}
+        <a href="/" className="flex flex-col leading-none -mt-0.5 select-none">
+          <span
+            className="serif-display text-[26px] sm:text-[28px] tracking-[-0.04em] text-[color:var(--color-ink)]"
+            style={{ fontWeight: 500 }}
+          >
+            APEX
+            <span
+              className="serif-wonk text-[color:var(--color-ember)] ml-0.5"
+              style={{ fontWeight: 500 }}
+            >
+              .
+            </span>
+          </span>
+          <span className="font-mono text-[9px] tracking-[0.32em] uppercase text-[color:var(--color-ink)]/55 mt-0.5">
+            Performance · Chi
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        {/* CENTER — nav links */}
+        <nav className="hidden lg:flex items-center gap-9">
           {links.map((l) => (
-            <a key={l.label} href={l.href}
-              className={`text-[11px] font-bold tracking-[0.15em] uppercase transition-colors ${
-                dark ? 'text-white/60 hover:text-white' : 'text-[#0A0A0A]/50 hover:text-[#0A0A0A]'
-              }`}>
+            <a
+              key={l.label}
+              href={l.href}
+              className="group relative font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/65 hover:text-[color:var(--color-ink)] transition-colors py-2"
+            >
               {l.label}
+              <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-[color:var(--color-ember)] scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
-          <a href="/contact"
-            className="bg-[#C8FF00] text-[#0A0A0A] font-bold px-5 py-2.5 rounded-lg text-[13px] hover:opacity-90 transition-opacity">
-            Free Trial →
+        {/* RIGHT — clock + CTA */}
+        <div className="hidden md:flex items-center gap-5">
+          <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 tabular-nums">
+            {time || '—'}  ·  OPEN
+          </span>
+          <a
+            href="/contact"
+            className="group inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
+          >
+            Trial Pass
+            <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-9" />
           </a>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden p-3 -mr-3" aria-label="Menu">
-          <div className="w-5 flex flex-col gap-[5px]">
-            {[
-              open ? 'rotate-45 translate-y-[9px]' : '',
-              open ? 'opacity-0' : '',
-              open ? '-rotate-45 -translate-y-[9px]' : '',
-            ].map((cls, i) => (
-              <span key={i} className={`h-[2px] rounded transition-all ${cls} ${dark ? 'bg-white' : 'bg-[#0A0A0A]'}`} />
-            ))}
-          </div>
+        {/* MOBILE TOGGLE */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="lg:hidden p-2 -mr-2 flex flex-col gap-[5px] w-9 items-end"
+          aria-label="Menu"
+        >
+          <span
+            className={`h-px bg-[color:var(--color-ink)] transition-all duration-300 ${
+              open ? 'w-6 rotate-45 translate-y-[6px]' : 'w-6'
+            }`}
+          />
+          <span
+            className={`h-px bg-[color:var(--color-ink)] transition-all duration-300 ${
+              open ? 'w-6 opacity-0' : 'w-4'
+            }`}
+          />
+          <span
+            className={`h-px bg-[color:var(--color-ink)] transition-all duration-300 ${
+              open ? 'w-6 -rotate-45 -translate-y-[6px]' : 'w-5'
+            }`}
+          />
         </button>
       </div>
 
+      {/* MOBILE SHEET */}
       {open && (
-        <div className="md:hidden fixed inset-0 top-16 bg-white z-40 flex flex-col p-6 sm:p-8 gap-4 border-t border-black/[0.06]">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} onClick={() => setOpen(false)}
-              className="text-[#0A0A0A] text-[22px] sm:text-[28px] font-black tracking-tight uppercase hover:text-[#C8FF00] transition-colors border-b border-black/[0.06] pb-4">
-              {l.label}
+        <div className="lg:hidden fixed inset-0 top-20 bg-[color:var(--color-bone)] z-40 flex flex-col px-6 sm:px-10 pt-8 pb-12 gap-1">
+          <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-4">
+            Contents
+          </span>
+          <div className="h-px bg-[color:var(--color-ink)]/15 mb-4" />
+          {links.map((l, i) => (
+            <a
+              key={l.label}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="group grid grid-cols-12 items-baseline gap-3 py-4 border-b border-[color:var(--color-ink)]/10"
+            >
+              <span className="col-span-1 font-mono text-[11px] tracking-[0.18em] text-[color:var(--color-ink)]/40">
+                0{i + 1}
+              </span>
+              <span className="col-span-9 serif-display text-[34px] sm:text-[40px] leading-none tracking-[-0.02em] text-[color:var(--color-ink)] group-hover:text-[color:var(--color-ember)] transition-colors">
+                {l.label}
+              </span>
+              <span className="col-span-2 text-right text-[color:var(--color-ink)]/40 group-hover:text-[color:var(--color-ember)] transition-colors">
+                →
+              </span>
             </a>
           ))}
-          <a href="/contact" onClick={() => setOpen(false)}
-            className="mt-2 inline-block bg-[#C8FF00] text-[#0A0A0A] font-black px-8 py-4 rounded-lg text-[15px] sm:text-[16px] text-center">
-            Claim Free Trial →
+          <a
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="mt-8 inline-flex items-center justify-between bg-[color:var(--color-ink)] text-[color:var(--color-bone)] font-mono text-[11px] tracking-[0.22em] uppercase px-6 py-5"
+          >
+            Claim Trial Pass
+            <span className="block w-8 h-px bg-[color:var(--color-ember)]" />
           </a>
         </div>
       )}

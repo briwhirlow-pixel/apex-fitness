@@ -1,115 +1,174 @@
-import { classes, trainers } from '@/lib/data';
+import { classes } from '@/lib/data';
 
-const intensityColor: Record<string, string> = {
-  'High': '#FF4D1C',
-  'Moderate–High': '#FF8C00',
-  'Low–Moderate': '#00C9A7',
-  'Low': '#667EEA',
+const intensityScale: Record<string, number> = {
+  'Low': 1,
+  'Low–Moderate': 2,
+  'Moderate–High': 4,
+  'High': 5,
 };
-
-const categories = ['All', 'HIIT', 'Strength', 'Yoga', 'Cycling', 'Boxing', 'Recovery'];
 
 export default function ClassesPage() {
   return (
-    <div style={{ background: '#0A0A0A' }} className="min-h-screen">
+    <div className="bg-[color:var(--color-bone)] min-h-screen">
 
-      {/* Header */}
-      <section className="pt-32 pb-16 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto">
-        <p className="text-[#C8FF00] text-[11px] font-bold tracking-[0.2em] uppercase mb-4">Full Schedule</p>
-        <h1 className="font-black leading-tight tracking-tighter text-white mb-6" style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}>
-          Every class.<br />Every level.
-        </h1>
-        <p className="text-white/40 text-[16px] leading-relaxed max-w-lg">
-          40+ classes per week across 6 formats. Whether you're here to sweat, strengthen, or recover — there's a class for that.
-        </p>
+      {/* Header — magazine cover for the slate */}
+      <section className="relative max-w-[1400px] mx-auto px-6 sm:px-10 pt-32 sm:pt-36 pb-12">
+
+        {/* metadata strip */}
+        <div className="h-px bg-[color:var(--color-ink)]/25" />
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-1 py-3 font-mono text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-ink)]/55">
+          <span className="md:col-span-3">Apex / Chicago</span>
+          <span className="md:col-span-3">Section II — The Slate</span>
+          <span className="hidden md:inline md:col-span-3">All Six Disciplines</span>
+          <span className="md:col-span-3 text-right">Schedule live · weekly</span>
+        </div>
+        <div className="h-px bg-[color:var(--color-ink)]/25" />
+
+        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mt-14">
+          <div className="col-span-12 lg:col-span-8">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-5">
+              The Full Slate
+            </div>
+            <h1
+              className="serif-display tracking-[-0.028em] leading-[0.94] text-[color:var(--color-ink)]"
+              style={{ fontSize: 'clamp(56px, 10vw, 152px)', fontWeight: 500 }}
+            >
+              Six disciplines.<br />
+              <span className="serif-wonk">One</span> floor.
+            </h1>
+          </div>
+          <div className="col-span-12 lg:col-span-4 lg:pt-6 mt-6 lg:mt-0">
+            <p className="font-sans text-[color:var(--color-ink-soft)] text-[15px] sm:text-[16px] leading-[1.6] max-w-sm">
+              Forty hours a week, every level admitted. Most members rotate two or three
+              of the six — the right rotation depends on the season you&apos;re in.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* Category pills */}
-      <div className="px-5 sm:px-8 md:px-12 max-w-7xl mx-auto mb-10">
-        <div className="flex gap-2 flex-wrap">
-          {categories.map((cat) => (
-            <span key={cat} className={`px-4 py-2 rounded-full text-[13px] font-bold border cursor-pointer transition-all ${
-              cat === 'All'
-                ? 'border-[#C8FF00] text-[#C8FF00]'
-                : 'border-white/10 text-white/40 hover:border-white/30 hover:text-white/70'
-            }`}>
-              {cat}
-            </span>
-          ))}
-        </div>
-      </div>
+      {/* THE SLATE — full editorial index */}
+      <section className="max-w-[1400px] mx-auto px-6 sm:px-10 pb-24 sm:pb-32">
 
-      {/* Class grid */}
-      <div className="px-5 sm:px-8 md:px-12 max-w-7xl mx-auto pb-24">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {classes.map((cls) => (
-            <div key={cls.id}
-              className="rounded-2xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 hover:-translate-y-1"
-              style={{ background: 'rgba(255,255,255,0.04)' }}>
+        <div className="h-px bg-[color:var(--color-ink)]/30 mb-0" />
 
-              {/* Visual header */}
-              <div className="h-44 relative flex items-end p-5" style={{ background: cls.gradient }}>
-                <div className="absolute inset-0 opacity-[0.15]"
-                  style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.5) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-                <div className="relative flex items-center justify-between w-full">
-                  <span className="text-white/90 text-[11px] font-bold tracking-widest uppercase bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+        {classes.map((cls, i) => {
+          const intensity = intensityScale[cls.intensity] ?? 3;
+          return (
+            <article
+              key={cls.id}
+              id={cls.id}
+              className="grid grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-6 py-10 sm:py-14 border-b border-[color:var(--color-ink)]/20 group"
+            >
+              {/* Number gutter */}
+              <div className="col-span-2 sm:col-span-1">
+                <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 leading-none">
+                  Nº 0{i + 1}
+                </div>
+                <div className="h-px w-6 bg-[color:var(--color-ember)] mt-3" />
+              </div>
+
+              {/* Name + body */}
+              <div className="col-span-10 sm:col-span-6 lg:col-span-5">
+                <div className="flex items-baseline gap-4 mb-3 flex-wrap">
+                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55">
                     {cls.category}
                   </span>
-                  <span className="text-white/90 text-[11px] font-bold bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/35">
                     {cls.duration}
                   </span>
                 </div>
+
+                <h2
+                  className="serif-display leading-[0.92] tracking-[-0.025em] text-[color:var(--color-ink)] mb-5"
+                  style={{ fontSize: 'clamp(36px, 5.5vw, 76px)', fontWeight: 500 }}
+                >
+                  {cls.name}
+                </h2>
+
+                <p className="font-sans text-[color:var(--color-ink-soft)] text-[14.5px] sm:text-[15.5px] leading-[1.6] max-w-[48ch]">
+                  {cls.description}
+                </p>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h2 className="text-white font-black text-[20px] tracking-tight">{cls.name}</h2>
-                  <span className="text-[11px] font-bold px-2.5 py-1 rounded-full flex-shrink-0 ml-3"
-                    style={{ color: intensityColor[cls.intensity] || '#C8FF00', background: `${intensityColor[cls.intensity] || '#C8FF00'}15` }}>
-                    {cls.intensity}
-                  </span>
+              {/* Schedule */}
+              <div className="col-span-12 sm:col-span-5 lg:col-span-3">
+                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-3">
+                  Schedule
+                </div>
+                <ul className="space-y-2">
+                  {cls.schedule.map((slot) => (
+                    <li key={slot} className="font-mono text-[12px] text-[color:var(--color-ink)]/85 flex items-center justify-between">
+                      <span>{slot}</span>
+                      <span className="text-[color:var(--color-ink)]/30 ml-3">·</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Intensity + Coach */}
+              <div className="col-span-12 sm:col-span-7 lg:col-span-3">
+                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-3">
+                  Intensity · {cls.intensity}
+                </div>
+                <div className="flex items-end gap-1.5 h-8 mb-6">
+                  {[1, 2, 3, 4, 5].map((b) => (
+                    <span
+                      key={b}
+                      className="flex-1"
+                      style={{
+                        height: `${30 + b * 14}%`,
+                        background:
+                          b <= intensity
+                            ? 'var(--color-ember)'
+                            : 'color-mix(in oklab, var(--color-ink) 12%, transparent)',
+                      }}
+                    />
+                  ))}
                 </div>
 
-                <p className="text-white/40 text-[13px] leading-relaxed mb-5">{cls.description}</p>
-
-                {/* Schedule */}
-                <div className="mb-5">
-                  <p className="text-white/25 text-[11px] uppercase tracking-widest mb-2 font-semibold">Schedule</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {cls.schedule.map((time) => (
-                      <span key={time} className="text-[11px] font-semibold text-white/50 border border-white/10 px-2.5 py-1 rounded-full">
-                        {time}
-                      </span>
-                    ))}
+                <div className="pt-5 border-t border-[color:var(--color-ink)]/10">
+                  <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-1">
+                    Coach
                   </div>
-                </div>
-
-                {/* Coach + spots */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-black text-white/70"
-                      style={{ background: trainers.find(t => t.name === cls.trainer)?.gradient || 'rgba(255,255,255,0.1)' }}>
-                      {cls.trainer.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <span className="text-white/50 text-[12px]">{cls.trainer}</span>
+                  <div className="serif-display text-[color:var(--color-ink)] text-[20px] leading-none mb-3" style={{ fontWeight: 500 }}>
+                    {cls.trainer}
                   </div>
-                  <span className="text-white/30 text-[12px]">{cls.spots} spots</span>
+
+                  <a
+                    href="/contact"
+                    className="group/cta inline-flex items-center gap-3 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
+                  >
+                    Reserve a Seat
+                    <span className="block w-6 h-px bg-current transition-all duration-300 group-hover/cta:w-12" />
+                  </a>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            </article>
+          );
+        })}
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-white/40 text-[15px] mb-6">Ready to try your first class for free?</p>
-          <a href="/contact"
-            className="inline-flex items-center gap-2 font-black px-10 py-4 rounded-lg text-[#0A0A0A] text-[15px] hover:opacity-90 transition-all hover:scale-[1.03] active:scale-[0.97]"
-            style={{ background: '#C8FF00' }}>
-            Claim My Free Class →
-          </a>
+        {/* Section close */}
+        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 pt-14 sm:pt-20 items-end">
+          <div className="col-span-12 sm:col-span-7">
+            <p
+              className="serif-display text-[color:var(--color-ink)] leading-[1.15] tracking-[-0.012em]"
+              style={{ fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 500 }}
+            >
+              Unsure which to pick? Walk in the trial hour — we&apos;ll match you to the
+              right room.
+            </p>
+          </div>
+          <div className="col-span-12 sm:col-span-5 mt-6 sm:mt-0 sm:text-right">
+            <a
+              href="/contact"
+              className="group inline-flex items-center gap-3 bg-[color:var(--color-ink)] text-[color:var(--color-bone)] px-7 py-5 font-mono text-[11px] tracking-[0.24em] uppercase hover:bg-[color:var(--color-ember)] transition-colors duration-300"
+            >
+              Claim Trial Hour
+              <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-14" />
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
