@@ -2,33 +2,20 @@
 import { useState, useEffect } from 'react';
 
 const links = [
-  { label: 'Disciplines', href: '/classes' },
-  { label: 'Coaches', href: '/#trainers' },
+  { label: 'Classes', href: '/classes' },
+  { label: 'Trainers', href: '/#trainers' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Visit', href: '/contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [time, setTime] = useState('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    const tick = () => {
-      const d = new Date();
-      const hh = String(d.getHours()).padStart(2, '0');
-      const mm = String(d.getMinutes()).padStart(2, '0');
-      setTime(`${hh}:${mm} CT`);
-    };
-    tick();
-    const id = setInterval(tick, 30_000);
-    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -38,117 +25,88 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background,backdrop-filter,border-color] duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || open
-          ? 'bg-[color:var(--color-bone)]/85 backdrop-blur-md border-b border-[color:var(--color-ink)]/15'
-          : 'bg-transparent border-b border-transparent'
+          ? 'bg-white shadow-sm'
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-[1170px] mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-6">
 
-        {/* WORDMARK — editorial */}
-        <a href="/" className="flex flex-col leading-none -mt-0.5 select-none">
-          <span
-            className="serif-display text-[26px] sm:text-[28px] tracking-[-0.04em] text-[color:var(--color-ink)]"
-            style={{ fontWeight: 500 }}
-          >
+        {/* LOGO */}
+        <a href="/" className="flex items-baseline select-none">
+          <span className="font-[family-name:var(--font-heading)] text-[28px] sm:text-[32px] font-bold uppercase tracking-wider text-[color:var(--color-ink)]">
             APEX
-            <span
-              className="serif-wonk text-[color:var(--color-ember)] ml-0.5"
-              style={{ fontWeight: 500 }}
-            >
-              .
-            </span>
           </span>
-          <span className="font-mono text-[9px] tracking-[0.32em] uppercase text-[color:var(--color-ink)]/55 mt-0.5">
-            Performance · Chi
-          </span>
+          <span className="text-[color:var(--color-ember)] text-[32px] font-bold ml-0.5">.</span>
         </a>
 
-        {/* CENTER — nav links */}
-        <nav className="hidden lg:flex items-center gap-9">
+        {/* CENTER NAV */}
+        <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className="group relative font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/65 hover:text-[color:var(--color-ink)] transition-colors py-2"
+              className="text-[15px] font-medium text-[color:var(--color-ink)]/70 hover:text-[color:var(--color-ember)] transition-colors"
             >
               {l.label}
-              <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-[color:var(--color-ember)] scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
 
-        {/* RIGHT — clock + CTA */}
-        <div className="hidden md:flex items-center gap-5">
-          <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 tabular-nums">
-            {time || '—'}  ·  OPEN
-          </span>
+        {/* RIGHT CTA */}
+        <div className="hidden md:flex items-center">
           <a
             href="/contact"
-            className="group inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
+            className="bg-[color:var(--color-ember)] text-white rounded-full px-6 py-2.5 text-[14px] font-semibold hover:bg-[color:var(--color-ember-deep)] transition-colors"
           >
-            Trial Pass
-            <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-9" />
+            Free Trial
           </a>
         </div>
 
         {/* MOBILE TOGGLE */}
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden p-2 -mr-2 flex flex-col gap-[5px] w-9 items-end"
+          className="lg:hidden p-2 -mr-2 flex flex-col gap-[5px] w-9 items-center"
           aria-label="Menu"
         >
           <span
-            className={`h-px bg-[color:var(--color-ink)] transition-all duration-300 ${
-              open ? 'w-6 rotate-45 translate-y-[6px]' : 'w-6'
+            className={`h-0.5 bg-[color:var(--color-ink)] rounded transition-all duration-300 ${
+              open ? 'w-6 rotate-45 translate-y-[7px]' : 'w-6'
             }`}
           />
           <span
-            className={`h-px bg-[color:var(--color-ink)] transition-all duration-300 ${
-              open ? 'w-6 opacity-0' : 'w-4'
+            className={`h-0.5 bg-[color:var(--color-ink)] rounded transition-all duration-300 ${
+              open ? 'w-6 opacity-0' : 'w-6'
             }`}
           />
           <span
-            className={`h-px bg-[color:var(--color-ink)] transition-all duration-300 ${
-              open ? 'w-6 -rotate-45 -translate-y-[6px]' : 'w-5'
+            className={`h-0.5 bg-[color:var(--color-ink)] rounded transition-all duration-300 ${
+              open ? 'w-6 -rotate-45 -translate-y-[7px]' : 'w-6'
             }`}
           />
         </button>
       </div>
 
-      {/* MOBILE SHEET */}
+      {/* MOBILE MENU */}
       {open && (
-        <div className="lg:hidden fixed inset-0 top-20 bg-[color:var(--color-bone)] z-40 flex flex-col px-6 sm:px-10 pt-8 pb-12 gap-1">
-          <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-4">
-            Contents
-          </span>
-          <div className="h-px bg-[color:var(--color-ink)]/15 mb-4" />
-          {links.map((l, i) => (
+        <div className="lg:hidden fixed inset-0 top-20 bg-white z-40 flex flex-col px-5 sm:px-8 pt-8 pb-12 gap-2">
+          {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="group grid grid-cols-12 items-baseline gap-3 py-4 border-b border-[color:var(--color-ink)]/10"
+              className="py-4 border-b border-gray-100 text-[18px] font-medium text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
             >
-              <span className="col-span-1 font-mono text-[11px] tracking-[0.18em] text-[color:var(--color-ink)]/40">
-                0{i + 1}
-              </span>
-              <span className="col-span-9 serif-display text-[34px] sm:text-[40px] leading-none tracking-[-0.02em] text-[color:var(--color-ink)] group-hover:text-[color:var(--color-ember)] transition-colors">
-                {l.label}
-              </span>
-              <span className="col-span-2 text-right text-[color:var(--color-ink)]/40 group-hover:text-[color:var(--color-ember)] transition-colors">
-                →
-              </span>
+              {l.label}
             </a>
           ))}
           <a
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-8 inline-flex items-center justify-between bg-[color:var(--color-ink)] text-[color:var(--color-bone)] font-mono text-[11px] tracking-[0.22em] uppercase px-6 py-5"
+            className="mt-6 bg-[color:var(--color-ember)] text-white rounded-full px-6 py-4 text-center text-[16px] font-semibold hover:bg-[color:var(--color-ember-deep)] transition-colors"
           >
-            Claim Trial Pass
-            <span className="block w-8 h-px bg-[color:var(--color-ember)]" />
+            Start Free Trial
           </a>
         </div>
       )}

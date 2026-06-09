@@ -1,42 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0F0E0B;
-  --color-ink-soft: #2C2A24;
-  --color-bone: #EFE9DD;
-  --color-bone-soft: #E5DECF;
-  --color-stone: #7A756A;
-  --color-ember: #B85A1C;
-  --color-ember-deep: #8E3F0C;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #4a4a4a;
+  --color-bone: #ffffff;
+  --color-bone-soft: #f5f5f5;
+  --color-stone: #6b7280;
+  --color-ember: #e41313;
+  --color-ember-deep: #b91010;
+  --color-accent: #559fb0;
 
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-mono: var(--font-mono), ui-monospace, "JetBrains Mono", monospace;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
 }
 
-@keyframes apex-rise {
-  from { opacity: 0; transform: translateY(28px); }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes apex-fade {
+@keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
-}
-
-@keyframes apex-rule {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-@keyframes apex-mask {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
-}
-
-@keyframes apex-ember {
-  0%, 60% { transform: scaleX(0); transform-origin: left; }
-  100%    { transform: scaleX(1); transform-origin: left; }
 }
 
 html { scroll-behavior: smooth; }
@@ -45,56 +30,10 @@ body {
   background: var(--color-bone);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-feature-settings: "ss01", "ss02", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--color-ember); color: var(--color-bone); }
-
-/* Paper grain — applied as fixed full-bleed overlay */
-.paper-grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.42;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.055 0 0 0 0 0.04 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='480' height='480' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
-}
-
-/* Fine hairline grid for editorial layouts */
-.editorial-grid {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--color-ink) 6%, transparent) 1px, transparent 1px);
-  background-size: calc(100% / 12) 100%;
-}
-
-/* Fraunces wonky italic — for editorial emphasis */
-.serif-wonk {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
-}
-
-.serif-display {
-  font-family: var(--font-serif);
-  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 144;
-}
-
-/* Crop marks (top-left corner) — composed via two pseudo elements */
-.crop-marks::before,
-.crop-marks::after {
-  content: "";
-  position: absolute;
-  background: var(--color-ember);
-}
-.crop-marks::before {
-  top: 8px; left: 8px; width: 14px; height: 1px;
-}
-.crop-marks::after {
-  top: 8px; left: 8px; width: 1px; height: 14px;
-}
+::selection { background: var(--color-ember); color: #fff; }
 
 a, button { touch-action: manipulation; }

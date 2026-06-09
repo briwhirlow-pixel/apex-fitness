@@ -1,172 +1,104 @@
 import { classes } from '@/lib/data';
 
-const intensityScale: Record<string, number> = {
-  'Low': 1,
-  'Low–Moderate': 2,
-  'Moderate–High': 4,
-  'High': 5,
-};
-
 export default function ClassesPage() {
   return (
-    <div className="bg-[color:var(--color-bone)] min-h-screen">
+    <div className="bg-white min-h-screen">
 
-      {/* Header — magazine cover for the slate */}
-      <section className="relative max-w-[1400px] mx-auto px-6 sm:px-10 pt-32 sm:pt-36 pb-12">
-
-        {/* metadata strip */}
-        <div className="h-px bg-[color:var(--color-ink)]/25" />
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-1 py-3 font-mono text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-ink)]/55">
-          <span className="md:col-span-3">Apex / Chicago</span>
-          <span className="md:col-span-3">Section II — The Slate</span>
-          <span className="hidden md:inline md:col-span-3">All Six Disciplines</span>
-          <span className="md:col-span-3 text-right">Schedule live · weekly</span>
-        </div>
-        <div className="h-px bg-[color:var(--color-ink)]/25" />
-
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mt-14">
-          <div className="col-span-12 lg:col-span-8">
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-5">
-              The Full Slate
-            </div>
-            <h1
-              className="serif-display tracking-[-0.028em] leading-[0.94] text-[color:var(--color-ink)]"
-              style={{ fontSize: 'clamp(56px, 10vw, 152px)', fontWeight: 500 }}
-            >
-              Six disciplines.<br />
-              <span className="serif-wonk">One</span> floor.
-            </h1>
-          </div>
-          <div className="col-span-12 lg:col-span-4 lg:pt-6 mt-6 lg:mt-0">
-            <p className="font-sans text-[color:var(--color-ink-soft)] text-[15px] sm:text-[16px] leading-[1.6] max-w-sm">
-              Forty hours a week, every level admitted. Most members rotate two or three
-              of the six — the right rotation depends on the season you&apos;re in.
-            </p>
-          </div>
+      {/* Page header */}
+      <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white pt-32 sm:pt-36 pb-16">
+        <div className="max-w-[1170px] mx-auto px-5 sm:px-8 text-center">
+          <h1 className="font-[family-name:var(--font-heading)] text-[clamp(40px,8vw,64px)] font-bold uppercase tracking-wide mb-4">
+            Our Classes
+          </h1>
+          <p className="text-white/65 text-[16px] sm:text-[18px] leading-relaxed max-w-2xl mx-auto">
+            Forty hours a week, every level admitted. Most members rotate two or three
+            of the six — the right rotation depends on the season you&apos;re in.
+          </p>
         </div>
       </section>
 
-      {/* THE SLATE — full editorial index */}
-      <section className="max-w-[1400px] mx-auto px-6 sm:px-10 pb-24 sm:pb-32">
-
-        <div className="h-px bg-[color:var(--color-ink)]/30 mb-0" />
-
-        {classes.map((cls, i) => {
-          const intensity = intensityScale[cls.intensity] ?? 3;
-          return (
+      {/* Class list */}
+      <section className="max-w-[1170px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
+        <div className="space-y-10">
+          {classes.map((cls) => (
             <article
               key={cls.id}
               id={cls.id}
-              className="grid grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-6 py-10 sm:py-14 border-b border-[color:var(--color-ink)]/20 group"
+              className="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-lg transition-shadow overflow-hidden"
             >
-              {/* Number gutter */}
-              <div className="col-span-2 sm:col-span-1">
-                <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 leading-none">
-                  Nº 0{i + 1}
-                </div>
-                <div className="h-px w-6 bg-[color:var(--color-ember)] mt-3" />
-              </div>
+              <div className="h-1.5 bg-[color:var(--color-ember)]" />
 
-              {/* Name + body */}
-              <div className="col-span-10 sm:col-span-6 lg:col-span-5">
-                <div className="flex items-baseline gap-4 mb-3 flex-wrap">
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55">
+              <div className="p-8 sm:p-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                {/* Left: class info */}
+                <div className="lg:col-span-2">
+                  <span className="inline-block bg-[color:var(--color-ember)]/10 text-[color:var(--color-ember)] text-[12px] font-semibold uppercase tracking-wider rounded-full px-3 py-1 mb-4">
                     {cls.category}
                   </span>
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/35">
-                    {cls.duration}
-                  </span>
-                </div>
 
-                <h2
-                  className="serif-display leading-[0.92] tracking-[-0.025em] text-[color:var(--color-ink)] mb-5"
-                  style={{ fontSize: 'clamp(36px, 5.5vw, 76px)', fontWeight: 500 }}
-                >
-                  {cls.name}
-                </h2>
+                  <h2 className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,40px)] font-bold uppercase tracking-wide text-[color:var(--color-ink)] mb-4">
+                    {cls.name}
+                  </h2>
 
-                <p className="font-sans text-[color:var(--color-ink-soft)] text-[14.5px] sm:text-[15.5px] leading-[1.6] max-w-[48ch]">
-                  {cls.description}
-                </p>
-              </div>
+                  <p className="text-[color:var(--color-stone)] text-[15px] leading-relaxed mb-5 max-w-2xl">
+                    {cls.description}
+                  </p>
 
-              {/* Schedule */}
-              <div className="col-span-12 sm:col-span-5 lg:col-span-3">
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-3">
-                  Schedule
-                </div>
-                <ul className="space-y-2">
-                  {cls.schedule.map((slot) => (
-                    <li key={slot} className="font-mono text-[12px] text-[color:var(--color-ink)]/85 flex items-center justify-between">
-                      <span>{slot}</span>
-                      <span className="text-[color:var(--color-ink)]/30 ml-3">·</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Intensity + Coach */}
-              <div className="col-span-12 sm:col-span-7 lg:col-span-3">
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-3">
-                  Intensity · {cls.intensity}
-                </div>
-                <div className="flex items-end gap-1.5 h-8 mb-6">
-                  {[1, 2, 3, 4, 5].map((b) => (
-                    <span
-                      key={b}
-                      className="flex-1"
-                      style={{
-                        height: `${30 + b * 14}%`,
-                        background:
-                          b <= intensity
-                            ? 'var(--color-ember)'
-                            : 'color-mix(in oklab, var(--color-ink) 12%, transparent)',
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <div className="pt-5 border-t border-[color:var(--color-ink)]/10">
-                  <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-1">
-                    Coach
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-gray-100 text-[color:var(--color-ink-soft)] text-[13px] font-medium rounded-full px-4 py-1.5">
+                      {cls.duration}
+                    </span>
+                    <span className="bg-gray-100 text-[color:var(--color-ink-soft)] text-[13px] font-medium rounded-full px-4 py-1.5">
+                      {cls.intensity}
+                    </span>
+                    <span className="bg-gray-100 text-[color:var(--color-ink-soft)] text-[13px] font-medium rounded-full px-4 py-1.5">
+                      Coach: {cls.trainer}
+                    </span>
+                    <span className="bg-gray-100 text-[color:var(--color-ink-soft)] text-[13px] font-medium rounded-full px-4 py-1.5">
+                      {cls.spots} spots
+                    </span>
                   </div>
-                  <div className="serif-display text-[color:var(--color-ink)] text-[20px] leading-none mb-3" style={{ fontWeight: 500 }}>
-                    {cls.trainer}
-                  </div>
+                </div>
 
+                {/* Right: schedule */}
+                <div className="lg:border-l lg:border-gray-100 lg:pl-8">
+                  <h3 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider text-[color:var(--color-ink)] mb-4">
+                    Schedule
+                  </h3>
+                  <ul className="space-y-2.5 mb-6">
+                    {cls.schedule.map((slot) => (
+                      <li key={slot} className="text-[color:var(--color-ink-soft)] text-[14px] flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[color:var(--color-ember)]" />
+                        {slot}
+                      </li>
+                    ))}
+                  </ul>
                   <a
                     href="/contact"
-                    className="group/cta inline-flex items-center gap-3 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
+                    className="inline-block bg-[color:var(--color-ember)] text-white rounded-full px-6 py-2.5 text-[14px] font-semibold hover:bg-[color:var(--color-ember-deep)] transition-colors"
                   >
-                    Reserve a Seat
-                    <span className="block w-6 h-px bg-current transition-all duration-300 group-hover/cta:w-12" />
+                    Reserve a Spot
                   </a>
                 </div>
               </div>
             </article>
-          );
-        })}
+          ))}
+        </div>
 
-        {/* Section close */}
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 pt-14 sm:pt-20 items-end">
-          <div className="col-span-12 sm:col-span-7">
-            <p
-              className="serif-display text-[color:var(--color-ink)] leading-[1.15] tracking-[-0.012em]"
-              style={{ fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 500 }}
-            >
-              Unsure which to pick? Walk in the trial hour — we&apos;ll match you to the
-              right room.
-            </p>
-          </div>
-          <div className="col-span-12 sm:col-span-5 mt-6 sm:mt-0 sm:text-right">
-            <a
-              href="/contact"
-              className="group inline-flex items-center gap-3 bg-[color:var(--color-ink)] text-[color:var(--color-bone)] px-7 py-5 font-mono text-[11px] tracking-[0.24em] uppercase hover:bg-[color:var(--color-ember)] transition-colors duration-300"
-            >
-              Claim Trial Hour
-              <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-14" />
-            </a>
-          </div>
+        {/* Bottom CTA */}
+        <div className="text-center mt-16 bg-[color:var(--color-bone-soft)] rounded-xl p-10">
+          <h3 className="font-[family-name:var(--font-heading)] text-[24px] font-bold uppercase tracking-wide text-[color:var(--color-ink)] mb-3">
+            Not Sure Which to Pick?
+          </h3>
+          <p className="text-[color:var(--color-stone)] text-[15px] leading-relaxed mb-6 max-w-lg mx-auto">
+            Walk in for your free trial hour and we&apos;ll match you to the right class.
+          </p>
+          <a
+            href="/contact"
+            className="inline-block bg-[color:var(--color-ember)] text-white rounded-full px-8 py-3.5 text-[15px] font-semibold hover:bg-[color:var(--color-ember-deep)] transition-colors"
+          >
+            Claim Trial Hour
+          </a>
         </div>
       </section>
     </div>

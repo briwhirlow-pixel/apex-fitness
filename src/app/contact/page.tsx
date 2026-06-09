@@ -16,123 +16,82 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-[color:var(--color-bone)] min-h-screen">
-      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 pt-32 sm:pt-36 pb-24 sm:pb-32">
+    <div className="bg-white min-h-screen">
 
-        {/* Masthead strip */}
-        <div className="h-px bg-[color:var(--color-ink)]/25" />
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-1 py-3 font-mono text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-ink)]/55">
-          <span className="md:col-span-3">Apex / Chicago</span>
-          <span className="md:col-span-3">Section IV — Reservation</span>
-          <span className="hidden md:inline md:col-span-3">Trial hour on the house</span>
-          <span className="md:col-span-3 text-right">No card · No commit</span>
+      {/* Page header */}
+      <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white pt-32 sm:pt-36 pb-16">
+        <div className="max-w-[1170px] mx-auto px-5 sm:px-8 text-center">
+          <h1 className="font-[family-name:var(--font-heading)] text-[clamp(40px,8vw,64px)] font-bold uppercase tracking-wide mb-4">
+            Get In Touch
+          </h1>
+          <p className="text-white/65 text-[16px] sm:text-[18px] leading-relaxed max-w-2xl mx-auto">
+            Pick a class, leave a note, and we&apos;ll have a coach reach out within the day. Your first hour is free — no card, no commitment.
+          </p>
         </div>
-        <div className="h-px bg-[color:var(--color-ink)]/25 mb-14" />
+      </section>
 
-        {/* Headline */}
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mb-16 sm:mb-20">
-          <div className="col-span-12 lg:col-span-8">
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-5">
-              Reserve a Trial Hour
-            </div>
-            <h1
-              className="serif-display tracking-[-0.028em] leading-[0.94] text-[color:var(--color-ink)]"
-              style={{ fontSize: 'clamp(52px, 9vw, 140px)', fontWeight: 500 }}
-            >
-              Show up.<br />
-              <span className="serif-wonk">Try a class</span>.
-            </h1>
-          </div>
-          <div className="col-span-12 lg:col-span-4 lg:pt-6 mt-6 lg:mt-0">
-            <p className="font-sans text-[color:var(--color-ink-soft)] text-[15px] sm:text-[16px] leading-[1.6] max-w-sm">
-              Pick a class, leave a note, and we&apos;ll have a coach reach out inside the
-              day. The hour itself is yours — paid or not, returning or not.
-            </p>
-          </div>
-        </div>
+      {/* Form + Sidebar */}
+      <section className="max-w-[1170px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-        {/* Form + sidebar */}
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-10 gap-y-12">
+          {/* Sidebar */}
+          <aside className="order-2 lg:order-1 space-y-8">
 
-          {/* Sidebar: studio info */}
-          <aside className="col-span-12 lg:col-span-4 order-2 lg:order-1">
-
-            {/* Visit */}
-            <div className="border-t border-[color:var(--color-ink)]/25 pt-5">
-              <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 mb-3">
-                Where
-              </div>
-              <p
-                className="serif-display text-[color:var(--color-ink)] leading-[1.2]"
-                style={{ fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 500 }}
-              >
+            {/* Location */}
+            <div className="bg-[color:var(--color-bone-soft)] rounded-xl p-6">
+              <h3 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider text-[color:var(--color-ink)] mb-3">
+                Location
+              </h3>
+              <p className="text-[color:var(--color-ink)] text-[15px] font-medium">
                 {siteConfig.address.split(',')[0]}
               </p>
-              <p className="font-sans text-[color:var(--color-ink-soft)] text-[14px] mt-1">
+              <p className="text-[color:var(--color-stone)] text-[14px]">
                 {siteConfig.address.split(',').slice(1).join(',').trim()}
               </p>
             </div>
 
             {/* Hours */}
-            <div className="border-t border-[color:var(--color-ink)]/15 mt-8 pt-5">
-              <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 mb-3">
+            <div className="bg-[color:var(--color-bone-soft)] rounded-xl p-6">
+              <h3 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider text-[color:var(--color-ink)] mb-3">
                 Hours
+              </h3>
+              <div className="text-[color:var(--color-stone)] text-[14px] space-y-1.5">
+                <p>Mon–Fri: {siteConfig.hours.weekday}</p>
+                <p>Saturday: {siteConfig.hours.saturday}</p>
+                <p>Sunday: {siteConfig.hours.sunday}</p>
               </div>
-              <table className="w-full font-mono text-[12px]">
-                <tbody>
-                  <tr className="border-b border-[color:var(--color-ink)]/10">
-                    <td className="py-2 pr-3 uppercase tracking-[0.18em] text-[color:var(--color-ink)]/55">Mon — Fri</td>
-                    <td className="py-2 text-right text-[color:var(--color-ink)]">{siteConfig.hours.weekday}</td>
-                  </tr>
-                  <tr className="border-b border-[color:var(--color-ink)]/10">
-                    <td className="py-2 pr-3 uppercase tracking-[0.18em] text-[color:var(--color-ink)]/55">Sat</td>
-                    <td className="py-2 text-right text-[color:var(--color-ink)]">{siteConfig.hours.saturday}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 pr-3 uppercase tracking-[0.18em] text-[color:var(--color-ink)]/55">Sun</td>
-                    <td className="py-2 text-right text-[color:var(--color-ink)]">{siteConfig.hours.sunday}</td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
 
-            {/* Reach */}
-            <div className="border-t border-[color:var(--color-ink)]/15 mt-8 pt-5">
-              <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 mb-3">
-                Direct
-              </div>
+            {/* Contact */}
+            <div className="bg-[color:var(--color-bone-soft)] rounded-xl p-6">
+              <h3 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider text-[color:var(--color-ink)] mb-3">
+                Contact
+              </h3>
               <div className="space-y-2">
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="block serif-display text-[color:var(--color-ink)] text-[18px] hover:text-[color:var(--color-ember)] transition-colors"
-                  style={{ fontWeight: 500 }}
-                >
+                <a href={`mailto:${siteConfig.email}`} className="block text-[color:var(--color-ember)] text-[15px] font-medium hover:underline">
                   {siteConfig.email}
                 </a>
-                <a
-                  href={`tel:${siteConfig.phone}`}
-                  className="block font-mono text-[13px] text-[color:var(--color-ink)]/65 hover:text-[color:var(--color-ember)] transition-colors"
-                >
+                <a href={`tel:${siteConfig.phone}`} className="block text-[color:var(--color-stone)] text-[14px] hover:text-[color:var(--color-ember)] transition-colors">
                   {siteConfig.phone}
                 </a>
               </div>
             </div>
 
-            {/* Notice */}
-            <div className="border-t border-[color:var(--color-ink)]/15 mt-8 pt-5">
-              <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-3">
+            {/* Trial day info */}
+            <div className="bg-[color:var(--color-bone-soft)] rounded-xl p-6">
+              <h3 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider text-[color:var(--color-ember)] mb-3">
                 On the Day
-              </div>
-              <ol className="space-y-3 text-[14px] font-sans text-[color:var(--color-ink-soft)] leading-[1.55]">
+              </h3>
+              <ol className="space-y-3 text-[14px] text-[color:var(--color-stone)] leading-relaxed">
                 {[
-                  'Arrive ten minutes early — we keep the tour short.',
+                  'Arrive ten minutes early',
                   'Wear what you train in. Bring water.',
-                  'Equipment provided. Towels too.',
-                  'Tell the coach it is your first hour. They scale to it.',
+                  'Equipment and towels provided.',
+                  'Tell the coach it\'s your first hour.',
                 ].map((line, i) => (
-                  <li key={i} className="grid grid-cols-[auto_1fr] gap-3">
-                    <span className="font-mono text-[11px] tracking-[0.18em] text-[color:var(--color-ember)] mt-1">
-                      0{i + 1}
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-[color:var(--color-ember)] text-white text-[12px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {i + 1}
                     </span>
                     <span>{line}</span>
                   </li>
@@ -142,173 +101,123 @@ export default function ContactPage() {
           </aside>
 
           {/* Form */}
-          <div className="col-span-12 lg:col-span-8 order-1 lg:order-2">
+          <div className="lg:col-span-2 order-1 lg:order-2">
 
             {submitted ? (
-              <div className="relative border border-[color:var(--color-ink)] p-10 sm:p-14 min-h-[440px] flex flex-col justify-center">
-                <span className="absolute top-3 left-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute top-3 left-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-                <span className="absolute top-3 right-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute top-3 right-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 left-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 left-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 right-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 right-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-5">
-                  Received · Filed
-                </div>
-                <h2
-                  className="serif-display text-[color:var(--color-ink)] leading-[0.95] tracking-[-0.025em] mb-6"
-                  style={{ fontSize: 'clamp(44px, 6vw, 80px)', fontWeight: 500 }}
-                >
-                  We&apos;ve got you.
+              <div className="bg-[color:var(--color-bone-soft)] rounded-xl p-10 sm:p-14 min-h-[440px] flex flex-col justify-center text-center">
+                <div className="text-[48px] mb-4">✅</div>
+                <h2 className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,40px)] font-bold uppercase tracking-wide text-[color:var(--color-ink)] mb-4">
+                  We&apos;ve Got You!
                 </h2>
-                <p className="font-sans text-[color:var(--color-ink-soft)] text-[16px] leading-[1.6] max-w-md">
-                  A coach will reach out inside the day to lock in your trial hour. If
-                  you don&apos;t hear from us by sundown, the email forwards to the front
-                  desk — call us, we&apos;ll make it right.
+                <p className="text-[color:var(--color-stone)] text-[16px] leading-relaxed max-w-md mx-auto">
+                  A coach will reach out within the day to lock in your trial hour. If you don&apos;t hear from us by sundown, give us a call.
                 </p>
-
-                <div className="mt-10 pt-6 border-t border-[color:var(--color-ink)]/15 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
-                  Filed · {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                </div>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="relative border border-[color:var(--color-ink)]/25 p-8 sm:p-10 lg:p-12 bg-[color:var(--color-bone)]"
+                className="bg-[color:var(--color-bone-soft)] rounded-xl p-8 sm:p-10"
               >
-                <span className="absolute top-3 left-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute top-3 left-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-                <span className="absolute top-3 right-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute top-3 right-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 left-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 left-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 right-3 w-3.5 h-px bg-[color:var(--color-ember)]" />
-                <span className="absolute bottom-3 right-3 w-px h-3.5 bg-[color:var(--color-ember)]" />
-
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-3">
-                  Reservation Form · No. 06
-                </div>
-                <h2
-                  className="serif-display text-[color:var(--color-ink)] leading-[0.95] tracking-[-0.025em] mb-10"
-                  style={{ fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 500 }}
-                >
-                  Leave a note<span className="text-[color:var(--color-ember)]">.</span>
+                <h2 className="font-[family-name:var(--font-heading)] text-[24px] font-bold uppercase tracking-wide text-[color:var(--color-ink)] mb-8">
+                  Reserve Your Trial Hour
                 </h2>
 
-                <div className="space-y-8">
+                <div className="space-y-6">
 
-                  <div className="grid sm:grid-cols-2 gap-x-6 gap-y-8">
-                    <FieldText name="firstName" label="First Name" placeholder="Alex" required />
-                    <FieldText name="lastName" label="Last Name" placeholder="Johnson" required />
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <label className="block">
+                      <span className="text-[color:var(--color-ink)] text-[14px] font-medium mb-1.5 block">
+                        First Name <span className="text-[color:var(--color-ember)]">*</span>
+                      </span>
+                      <input
+                        name="firstName"
+                        type="text"
+                        required
+                        placeholder="Alex"
+                        className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-[color:var(--color-ink)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ember)] focus:border-transparent transition"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-[color:var(--color-ink)] text-[14px] font-medium mb-1.5 block">
+                        Last Name <span className="text-[color:var(--color-ember)]">*</span>
+                      </span>
+                      <input
+                        name="lastName"
+                        type="text"
+                        required
+                        placeholder="Johnson"
+                        className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-[color:var(--color-ink)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ember)] focus:border-transparent transition"
+                      />
+                    </label>
                   </div>
 
-                  <FieldText name="email" type="email" label="Email" placeholder="alex@gmail.com" required />
-                  <FieldText name="phone" type="tel" label="Phone (optional)" placeholder="(312) 555-0100" />
+                  <label className="block">
+                    <span className="text-[color:var(--color-ink)] text-[14px] font-medium mb-1.5 block">
+                      Email <span className="text-[color:var(--color-ember)]">*</span>
+                    </span>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="alex@gmail.com"
+                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-[color:var(--color-ink)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ember)] focus:border-transparent transition"
+                    />
+                  </label>
 
-                  <FieldSelect
-                    name="classInterest"
-                    label="Which hour interests you?"
-                    options={['HIIT Forge', 'Iron Temple', 'Flow State', 'Velocity Cycle', 'Combat Ready', 'Recover & Reset', 'Not sure — surprise me']}
-                  />
+                  <label className="block">
+                    <span className="text-[color:var(--color-ink)] text-[14px] font-medium mb-1.5 block">
+                      Phone (optional)
+                    </span>
+                    <input
+                      name="phone"
+                      type="tel"
+                      placeholder="(312) 555-0100"
+                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-[color:var(--color-ink)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ember)] focus:border-transparent transition"
+                    />
+                  </label>
 
-                  <FieldTextarea name="goals" label="Anything we should know?" placeholder="Goals, injuries, schedule constraints…" rows={3} />
-
-                  <div className="pt-4 border-t border-[color:var(--color-ink)]/15 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
-                      Filed automatically · We don&apos;t share notes
-                    </p>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="group inline-flex items-center justify-center gap-4 bg-[color:var(--color-ink)] text-[color:var(--color-bone)] px-8 py-5 font-mono text-[11px] tracking-[0.24em] uppercase hover:bg-[color:var(--color-ember)] transition-colors duration-300 disabled:opacity-60"
+                  <label className="block">
+                    <span className="text-[color:var(--color-ink)] text-[14px] font-medium mb-1.5 block">
+                      Which class interests you? <span className="text-[color:var(--color-ember)]">*</span>
+                    </span>
+                    <select
+                      name="classInterest"
+                      required
+                      defaultValue=""
+                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-[color:var(--color-ink)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ember)] focus:border-transparent transition appearance-none cursor-pointer"
                     >
-                      {loading ? 'Filing…' : 'Send the Note'}
-                      <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-14" />
-                    </button>
-                  </div>
+                      <option value="" disabled>Pick a class…</option>
+                      {['HIIT Forge', 'Iron Temple', 'Flow State', 'Velocity Cycle', 'Combat Ready', 'Recover & Reset', 'Not sure — surprise me'].map((o) => (
+                        <option key={o} value={o}>{o}</option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="block">
+                    <span className="text-[color:var(--color-ink)] text-[14px] font-medium mb-1.5 block">
+                      Anything we should know?
+                    </span>
+                    <textarea
+                      name="goals"
+                      rows={3}
+                      placeholder="Goals, injuries, schedule constraints…"
+                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-[15px] text-[color:var(--color-ink)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-ember)] focus:border-transparent transition resize-none"
+                    />
+                  </label>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-[color:var(--color-ember)] text-white rounded-full py-4 text-[16px] font-semibold hover:bg-[color:var(--color-ember-deep)] transition-colors disabled:opacity-60"
+                  >
+                    {loading ? 'Sending…' : 'Send & Reserve'}
+                  </button>
                 </div>
               </form>
             )}
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  );
-}
-
-function FieldText({
-  name,
-  label,
-  placeholder,
-  type = 'text',
-  required = false,
-}: { name: string; label: string; placeholder?: string; type?: string; required?: boolean }) {
-  return (
-    <label className="block">
-      <span className="block font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 mb-2">
-        {label}{required && <span className="text-[color:var(--color-ember)]"> *</span>}
-      </span>
-      <input
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        className="w-full bg-transparent border-0 border-b border-[color:var(--color-ink)]/25 px-0 py-3 font-sans text-[16px] text-[color:var(--color-ink)] placeholder-[color:var(--color-ink)]/25 focus:outline-none focus:border-[color:var(--color-ember)] transition-colors"
-      />
-    </label>
-  );
-}
-
-function FieldTextarea({
-  name,
-  label,
-  placeholder,
-  rows = 3,
-}: { name: string; label: string; placeholder?: string; rows?: number }) {
-  return (
-    <label className="block">
-      <span className="block font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 mb-2">
-        {label}
-      </span>
-      <textarea
-        name={name}
-        rows={rows}
-        placeholder={placeholder}
-        className="w-full bg-transparent border-0 border-b border-[color:var(--color-ink)]/25 px-0 py-3 font-sans text-[16px] text-[color:var(--color-ink)] placeholder-[color:var(--color-ink)]/25 focus:outline-none focus:border-[color:var(--color-ember)] transition-colors resize-none"
-      />
-    </label>
-  );
-}
-
-function FieldSelect({
-  name,
-  label,
-  options,
-}: { name: string; label: string; options: string[] }) {
-  return (
-    <label className="block">
-      <span className="block font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55 mb-2">
-        {label}
-      </span>
-      <div className="relative">
-        <select
-          name={name}
-          required
-          defaultValue=""
-          className="w-full bg-transparent border-0 border-b border-[color:var(--color-ink)]/25 px-0 py-3 pr-6 font-sans text-[16px] text-[color:var(--color-ink)] focus:outline-none focus:border-[color:var(--color-ember)] transition-colors appearance-none cursor-pointer"
-        >
-          <option value="" disabled>Pick an hour…</option>
-          {options.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-        <span className="absolute right-0 top-1/2 -translate-y-1/2 font-mono text-[11px] text-[color:var(--color-ink)]/55 pointer-events-none">
-          ▾
-        </span>
-      </div>
-    </label>
   );
 }

@@ -1,154 +1,116 @@
 import { siteConfig } from '@/lib/data';
 
-const slate = ['HIIT Forge', 'Iron Temple', 'Flow State', 'Velocity Cycle', 'Combat Ready', 'Recover & Reset'];
-const studio = [
-  { label: 'House Doctrine', href: '/#about' },
-  { label: 'Resident Coaches', href: '/#trainers' },
-  { label: 'Rate Card', href: '/pricing' },
-  { label: 'Trial Hour', href: '/contact' },
-  { label: 'Full Schedule', href: '/classes' },
+const classLinks = ['HIIT Forge', 'Iron Temple', 'Flow State', 'Velocity Cycle', 'Combat Ready', 'Recover & Reset'];
+const quickLinks = [
+  { label: 'About', href: '/#about' },
+  { label: 'Trainers', href: '/#trainers' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Schedule', href: '/classes' },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[color:var(--color-bone)] border-t border-[color:var(--color-ink)]/15">
+    <footer className="bg-[#111111] text-white">
+      <div className="max-w-[1170px] mx-auto px-5 sm:px-8 pt-16 pb-8">
 
-      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-10">
+        {/* Main grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
-        {/* Colophon header */}
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mb-12 sm:mb-16">
-          <div className="col-span-12 lg:col-span-5">
-            {/* Big wordmark */}
-            <div className="flex items-baseline gap-3 mb-5">
-              <span
-                className="serif-display text-[color:var(--color-ink)] leading-none tracking-[-0.04em]"
-                style={{ fontSize: 'clamp(56px, 8vw, 96px)', fontWeight: 500 }}
-              >
-                APEX<span className="serif-wonk text-[color:var(--color-ember)]">.</span>
+          {/* Brand */}
+          <div>
+            <div className="flex items-baseline mb-4">
+              <span className="font-[family-name:var(--font-heading)] text-[28px] font-bold uppercase tracking-wider">
+                APEX
               </span>
+              <span className="text-[color:var(--color-ember)] text-[28px] font-bold ml-0.5">.</span>
             </div>
-            <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/55">
-              Performance Studio — Lincoln Park, Chicago
+            <p className="text-white/50 text-[14px] leading-relaxed mb-5">
+              A small studio with high standards. Six disciplines, three coaches, an hour we hope you remember.
             </p>
-            <p className="mt-5 font-sans text-[14px] text-[color:var(--color-ink-soft)] leading-[1.6] max-w-sm">
-              A small studio with high standards. Six disciplines, three coaches, an
-              hour we hope you remember.
-            </p>
+            <div className="flex items-center gap-3">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-[color:var(--color-ember)] hover:text-white transition-colors text-[14px]">
+                f
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:bg-[color:var(--color-ember)] hover:text-white transition-colors text-[14px]">
+                ig
+              </a>
+            </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-7 lg:pl-10 mt-10 lg:mt-0">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
+          {/* Quick links */}
+          <div>
+            <h4 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2.5">
+              {quickLinks.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-white/50 text-[14px] hover:text-[color:var(--color-ember)] transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              {/* The slate */}
-              <div>
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-4 pb-2 border-b border-[color:var(--color-ink)]/15">
-                  The Slate
-                </div>
-                <ul className="space-y-2">
-                  {slate.map((label) => (
-                    <li key={label}>
-                      <a
-                        href="/classes"
-                        className="serif-display text-[color:var(--color-ink)] text-[17px] leading-none hover:text-[color:var(--color-ember)] transition-colors"
-                        style={{ fontWeight: 400 }}
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* Classes */}
+          <div>
+            <h4 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider mb-4">
+              Classes
+            </h4>
+            <ul className="space-y-2.5">
+              {classLinks.map((label) => (
+                <li key={label}>
+                  <a href="/classes" className="text-white/50 text-[14px] hover:text-[color:var(--color-ember)] transition-colors">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              {/* Studio */}
-              <div>
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-4 pb-2 border-b border-[color:var(--color-ink)]/15">
-                  The Studio
-                </div>
-                <ul className="space-y-2">
-                  {studio.map((l) => (
-                    <li key={l.label}>
-                      <a
-                        href={l.href}
-                        className="serif-display text-[color:var(--color-ink)] text-[17px] leading-none hover:text-[color:var(--color-ember)] transition-colors"
-                        style={{ fontWeight: 400 }}
-                      >
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* Hours + Contact */}
+          <div>
+            <h4 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider mb-4">
+              Hours
+            </h4>
+            <div className="text-white/50 text-[14px] space-y-1.5 mb-5">
+              <p>Mon–Fri: {siteConfig.hours.weekday}</p>
+              <p>Saturday: {siteConfig.hours.saturday}</p>
+              <p>Sunday: {siteConfig.hours.sunday}</p>
+            </div>
 
-              {/* Visit */}
-              <div className="col-span-2 md:col-span-1">
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 mb-4 pb-2 border-b border-[color:var(--color-ink)]/15">
-                  Visit
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-sans text-[14px] text-[color:var(--color-ink)] leading-[1.5]">
-                      {siteConfig.address.split(',')[0]}
-                    </p>
-                    <p className="font-sans text-[14px] text-[color:var(--color-ink)]/60 leading-[1.5]">
-                      {siteConfig.address.split(',').slice(1).join(',').trim()}
-                    </p>
-                  </div>
-                  <div className="font-mono text-[11px] text-[color:var(--color-ink)]/70 space-y-0.5">
-                    <p>M—F · {siteConfig.hours.weekday}</p>
-                    <p>Sat · {siteConfig.hours.saturday}</p>
-                    <p>Sun · {siteConfig.hours.sunday}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <a
-                      href={`mailto:${siteConfig.email}`}
-                      className="block font-sans text-[14px] text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
-                    >
-                      {siteConfig.email}
-                    </a>
-                    <a
-                      href={`tel:${siteConfig.phone}`}
-                      className="block font-sans text-[14px] text-[color:var(--color-ink)]/65 hover:text-[color:var(--color-ember)] transition-colors"
-                    >
-                      {siteConfig.phone}
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <h4 className="font-[family-name:var(--font-heading)] text-[16px] font-semibold uppercase tracking-wider mb-3">
+              Contact
+            </h4>
+            <div className="text-white/50 text-[14px] space-y-1.5">
+              <p>{siteConfig.address}</p>
+              <p>
+                <a href={`tel:${siteConfig.phone}`} className="hover:text-[color:var(--color-ember)] transition-colors">
+                  {siteConfig.phone}
+                </a>
+              </p>
+              <p>
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-[color:var(--color-ember)] transition-colors">
+                  {siteConfig.email}
+                </a>
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Big wordmark divider */}
-        <div className="relative my-10 sm:my-14">
-          <div className="h-px bg-[color:var(--color-ink)]/25" />
-        </div>
-
-        {/* Colophon footer */}
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-4 font-mono text-[10px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/50">
-          <div className="col-span-12 sm:col-span-5">
-            © {year} Apex Performance Studio
-            <br />
-            <span className="text-[color:var(--color-ink)]/35">All hours reserved.</span>
-          </div>
-
-          <div className="col-span-12 sm:col-span-4">
-            <div className="text-[color:var(--color-ink)]/35 mb-1">Set in</div>
-            Fraunces · Geist · JetBrains Mono
-          </div>
-
-          <div className="col-span-12 sm:col-span-3 sm:text-right">
-            <div className="text-[color:var(--color-ink)]/35 mb-1">Issue</div>
-            Nº 06 — Spring &apos;26
-          </div>
-
-          <div className="col-span-12 pt-4 mt-2 border-t border-[color:var(--color-ink)]/10 flex flex-wrap gap-x-6 gap-y-2">
-            <a href="#" className="hover:text-[color:var(--color-ember)] transition-colors">Privacy</a>
-            <a href="#" className="hover:text-[color:var(--color-ember)] transition-colors">Terms</a>
-            <a href="#" className="hover:text-[color:var(--color-ember)] transition-colors">Member Waiver</a>
-            <a href="#" className="hover:text-[color:var(--color-ember)] transition-colors">Instagram</a>
-            <a href="#" className="hover:text-[color:var(--color-ember)] transition-colors">Google</a>
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/30 text-[13px]">
+            © {year} APEX Performance Studio. All rights reserved.
+          </p>
+          <div className="flex items-center gap-5 text-white/30 text-[13px]">
+            <a href="#" className="hover:text-white/60 transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white/60 transition-colors">Terms</a>
+            <a href="#" className="hover:text-white/60 transition-colors">Waiver</a>
           </div>
         </div>
       </div>

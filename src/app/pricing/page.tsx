@@ -29,109 +29,66 @@ const faqs = [
 
 export default function PricingPage() {
   return (
-    <div className="bg-[color:var(--color-bone)] min-h-screen">
+    <div className="bg-white min-h-screen">
 
-      {/* Header */}
-      <section className="relative max-w-[1400px] mx-auto px-6 sm:px-10 pt-32 sm:pt-36 pb-12">
-        <div className="h-px bg-[color:var(--color-ink)]/25" />
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-1 py-3 font-mono text-[10px] tracking-[0.18em] uppercase text-[color:var(--color-ink)]/55">
-          <span className="md:col-span-3">Apex / Chicago</span>
-          <span className="md:col-span-3">Section III — Rate Card</span>
-          <span className="hidden md:inline md:col-span-3">Valid through 12.31.26</span>
-          <span className="md:col-span-3 text-right">No joining fee</span>
-        </div>
-        <div className="h-px bg-[color:var(--color-ink)]/25" />
-
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mt-14">
-          <div className="col-span-12 lg:col-span-8">
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)] mb-5">
-              Membership
-            </div>
-            <h1
-              className="serif-display tracking-[-0.028em] leading-[0.94] text-[color:var(--color-ink)]"
-              style={{ fontSize: 'clamp(56px, 10vw, 152px)', fontWeight: 500 }}
-            >
-              Three rates.<br />
-              <span className="serif-wonk">No surprises</span>.
-            </h1>
-          </div>
-          <div className="col-span-12 lg:col-span-4 lg:pt-6 mt-6 lg:mt-0">
-            <p className="font-sans text-[color:var(--color-ink-soft)] text-[15px] sm:text-[16px] leading-[1.6] max-w-sm">
-              The drop-in is for the curious. The monthly is for the disciplined.
-              The annual is for the converted. Cancel any month with notice.
-            </p>
-          </div>
+      {/* Page header */}
+      <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white pt-32 sm:pt-36 pb-16">
+        <div className="max-w-[1170px] mx-auto px-5 sm:px-8 text-center">
+          <h1 className="font-[family-name:var(--font-heading)] text-[clamp(40px,8vw,64px)] font-bold uppercase tracking-wide mb-4">
+            Membership Pricing
+          </h1>
+          <p className="text-white/65 text-[16px] sm:text-[18px] leading-relaxed max-w-2xl mx-auto">
+            No joining fee. No contracts. No hidden costs. Cancel anytime with 30 days notice.
+          </p>
         </div>
       </section>
 
-      {/* Reuse the Pricing component as the rate-card body */}
+      {/* Pricing component */}
       <Pricing />
 
       {/* FAQ */}
-      <section className="max-w-[1400px] mx-auto px-6 sm:px-10 pb-24 sm:pb-32">
+      <section className="py-16 sm:py-24 bg-[color:var(--color-bone-soft)]">
+        <div className="max-w-[800px] mx-auto px-5 sm:px-8">
 
-        <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 items-end mb-12 sm:mb-16">
-          <div className="col-span-12 lg:col-span-8">
-            <div className="flex items-center gap-4 mb-5">
-              <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ember)]">
-                § 07 — Notes &amp; Footnotes
-              </span>
-              <span className="h-px flex-1 bg-[color:var(--color-ink)]/20" />
-            </div>
-            <h2
-              className="serif-display tracking-[-0.025em] leading-[0.95] text-[color:var(--color-ink)]"
-              style={{ fontSize: 'clamp(40px, 6vw, 80px)', fontWeight: 500 }}
-            >
-              The reasonable <span className="serif-wonk">questions</span>.
+          <div className="text-center mb-12">
+            <h2 className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,40px)] font-bold uppercase tracking-wide text-[color:var(--color-ink)] mb-4">
+              Frequently Asked Questions
             </h2>
+            <div className="w-16 h-1 bg-[color:var(--color-ember)] mx-auto rounded-full" />
           </div>
-        </div>
 
-        <div className="h-px bg-[color:var(--color-ink)]/25" />
-        {faqs.map((faq, i) => (
-          <details
-            key={faq.q}
-            className="group border-b border-[color:var(--color-ink)]/15 py-6 sm:py-8"
-          >
-            <summary className="grid grid-cols-12 gap-x-6 sm:gap-x-8 items-baseline cursor-pointer list-none">
-              <div className="col-span-2 sm:col-span-1 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45">
-                0{i + 1}
-              </div>
-              <h3
-                className="col-span-9 sm:col-span-10 serif-display leading-[1.18] tracking-[-0.015em] text-[color:var(--color-ink)] group-open:text-[color:var(--color-ember)] transition-colors"
-                style={{ fontSize: 'clamp(20px, 2.4vw, 30px)', fontWeight: 500 }}
+          <div className="space-y-0">
+            {faqs.map((faq) => (
+              <details
+                key={faq.q}
+                className="group border-b border-gray-200 bg-white first:rounded-t-xl last:rounded-b-xl"
               >
-                {faq.q}
-              </h3>
-              <div className="col-span-1 font-mono text-[14px] text-[color:var(--color-ink)]/55 group-open:rotate-45 transition-transform text-right">
-                +
-              </div>
-            </summary>
-            <div className="grid grid-cols-12 gap-x-6 sm:gap-x-8 mt-5">
-              <div className="hidden sm:block col-span-1" />
-              <p className="col-span-12 sm:col-span-10 font-sans text-[color:var(--color-ink-soft)] text-[15px] leading-[1.65] max-w-[58ch]">
-                {faq.a}
-              </p>
-            </div>
-          </details>
-        ))}
-
-        <div className="mt-16 grid grid-cols-12 gap-x-6 sm:gap-x-8 items-end pt-8 border-t border-[color:var(--color-ink)]/15">
-          <div className="col-span-12 sm:col-span-8">
-            <p
-              className="serif-display text-[color:var(--color-ink)] leading-[1.2] tracking-[-0.012em]"
-              style={{ fontSize: 'clamp(22px, 2.6vw, 32px)', fontWeight: 500 }}
-            >
-              Still have one we didn&apos;t answer? Ask the front desk in person.
-            </p>
+                <summary className="flex items-center justify-between cursor-pointer list-none px-6 py-5 hover:bg-gray-50 transition-colors">
+                  <h3 className="text-[color:var(--color-ink)] text-[16px] font-semibold pr-4">
+                    {faq.q}
+                  </h3>
+                  <span className="text-[color:var(--color-ember)] text-[20px] font-light shrink-0 group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <div className="px-6 pb-5">
+                  <p className="text-[color:var(--color-stone)] text-[15px] leading-relaxed">
+                    {faq.a}
+                  </p>
+                </div>
+              </details>
+            ))}
           </div>
-          <div className="col-span-12 sm:col-span-4 mt-6 sm:mt-0 sm:text-right">
+
+          <div className="text-center mt-12">
+            <p className="text-[color:var(--color-stone)] text-[15px] mb-4">
+              Still have questions?
+            </p>
             <a
               href="/contact"
-              className="group inline-flex items-center gap-3 font-mono text-[11px] tracking-[0.22em] uppercase text-[color:var(--color-ink)] hover:text-[color:var(--color-ember)] transition-colors"
+              className="inline-block bg-[color:var(--color-ember)] text-white rounded-full px-8 py-3.5 text-[15px] font-semibold hover:bg-[color:var(--color-ember-deep)] transition-colors"
             >
-              Send a note
-              <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-12" />
+              Contact Us
             </a>
           </div>
         </div>
