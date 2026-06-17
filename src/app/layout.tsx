@@ -27,20 +27,44 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "APEX Performance Studio — Haddon Township, NJ",
+  title: "APEX Performance Studio — West Chester, PA",
   description:
-    "Performance studio in Haddon Township NJ. Six disciplines, three resident coaches. An hour at the limit — first one's on us.",
+    "Performance studio in West Chester PA. Six disciplines, three resident coaches. Trial hour on the house.",
   openGraph: {
     title: "APEX Performance Studio",
-    description: "Haddon Township, NJ. An hour at the limit.",
+    description: "West Chester, PA. An hour at the limit.",
     type: "website",
   },
+};
+
+// LocalBusiness JSON-LD schema for Google
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HealthClub',
+  name: 'APEX Performance Studio',
+  description: 'Performance studio in West Chester PA. Six disciplines, three resident coaches.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'West Chester',
+    addressRegion: 'PA',
+    addressCountry: 'US',
+  },
+  telephone: '(610) 555-0174',
+  email: 'hello@apexperformancestudio.com',
+  openingHours: ['Mo-Fr 05:00-22:00', 'Sa 06:00-20:00', 'Su 07:00-18:00'],
+  priceRange: '$$',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable} ${instrument.variable}`}>
-      <body className="antialiased bg-[color:var(--color-ink)] text-[color:var(--color-cream)]">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
+      <body className="antialiased bg-[#0c0a08] text-[color:var(--color-cream)]">
         <Navbar />
         <main>{children}</main>
         <Footer />
