@@ -89,7 +89,7 @@ export default function Contact() {
             Trial hour is on the house. Walk in any morning before nine, the coffee is on us.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href="/contact" className="btn-solid-red">
+            <a href="/#contact" className="btn-solid-red">
               <span>Claim Trial Pass</span>
             </a>
           </div>

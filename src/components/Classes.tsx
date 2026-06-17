@@ -129,7 +129,7 @@ export default function Classes() {
             Schedule live. Updated weekly. Walk in for the trial hour, no booking required.
           </p>
           <a
-            href="/classes"
+            href="/#classes"
             className="inline-flex items-center gap-3 text-[11px] sm:text-[12px] tracking-[0.28em] uppercase font-semibold text-[color:var(--color-cream)] hover:text-[#e41313] transition-colors"
           >
             Full week schedule

@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3 lg:items-end">
-            <a href="/contact" className="btn-solid-red">
+            <a href="/#contact" className="btn-solid-red">
               <span>Claim Trial Pass</span>
             </a>
             <a

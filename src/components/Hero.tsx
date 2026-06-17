@@ -67,10 +67,10 @@ export default function Hero() {
             </p>
 
             <div className="col-span-12 md:col-span-6 lg:col-span-7 flex flex-wrap gap-3 md:justify-end">
-              <a href="/contact" className="btn-solid-red">
+              <a href="/#contact" className="btn-solid-red">
                 <span>Claim Trial Pass</span>
               </a>
-              <a href="/classes" className="btn-ghost">
+              <a href="/#classes" className="btn-ghost">
                 <span>The Slate</span>
               </a>
             </div>

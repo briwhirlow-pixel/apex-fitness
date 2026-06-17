@@ -80,7 +80,7 @@ export default function Pricing() {
                 {/* RIGHT — CTA inline */}
                 <div className="col-span-12 sm:col-span-3 lg:col-span-2 flex sm:items-center sm:justify-end">
                   <a
-                    href="/contact"
+                    href="/#contact"
                     className={`inline-flex items-center justify-between gap-3 px-5 py-3.5 text-[11px] tracking-[0.22em] uppercase font-semibold transition-colors w-full sm:w-auto ${
                       isFeature
                         ? 'bg-[#e41313] text-[color:var(--color-cream)] hover:bg-[#b50e0e]'
