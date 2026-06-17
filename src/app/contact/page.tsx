@@ -43,10 +43,10 @@ export default function ContactPage() {
                 Location
               </h3>
               <p className="text-[color:var(--color-ink)] text-[15px] font-medium">
-                {siteConfig.address.split(',')[0]}
+                {siteConfig.city}
               </p>
               <p className="text-[color:var(--color-stone)] text-[14px]">
-                {siteConfig.address.split(',').slice(1).join(',').trim()}
+                {siteConfig.region}
               </p>
             </div>
 
