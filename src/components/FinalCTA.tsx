@@ -115,7 +115,7 @@ export default function FinalCTA() {
         {/* sign-off */}
         <div data-cta-up className="mt-16 sm:mt-20 pt-7 border-t border-[color:var(--color-border-cream)] flex items-center justify-between flex-wrap gap-4 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-medium">
           <span className="text-[color:var(--color-cream)]/45">
-            412 Haddon Ave · Haddon Township, NJ
+            Haddon Township · NJ
           </span>
           <span className="text-[color:var(--color-cream)]/45">
             Mon–Fri 05:00 – 22:00 · Open weekends

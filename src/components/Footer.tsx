@@ -46,19 +46,17 @@ export default function Footer() {
           {/* Visit */}
           <div>
             <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold mb-4">
-              Visit
+              Where
             </div>
-            <address className="not-italic text-[14px] leading-[1.7] text-[color:var(--color-cream)]/75 font-light">
-              412 Haddon Ave<br />
-              Haddon Township, NJ 08108
-            </address>
+            <p className="text-[14px] leading-[1.7] text-[color:var(--color-cream)]/75 font-light">
+              Haddon Township<br />
+              New Jersey
+            </p>
             <a
-              href="https://maps.google.com/?q=Haddon+Township+NJ"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="mt-4 inline-flex items-center gap-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/60 hover:text-[color:var(--color-red)] transition-colors font-medium"
             >
-              Get directions
+              Book a visit
               <span aria-hidden className="block w-5 h-px bg-current" />
             </a>
           </div>
