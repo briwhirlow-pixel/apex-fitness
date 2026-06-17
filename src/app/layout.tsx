@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Oswald, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import UtilityStrip from "@/components/UtilityStrip";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -37,7 +39,6 @@ export const metadata: Metadata = {
   },
 };
 
-// LocalBusiness JSON-LD schema for Google
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'HealthClub',
@@ -65,7 +66,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="antialiased bg-[#0c0a08] text-[color:var(--color-cream)]">
+        <UtilityStrip />
         <Navbar />
+        <Reveal />
         <main>{children}</main>
         <Footer />
       </body>
