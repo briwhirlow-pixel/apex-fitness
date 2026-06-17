@@ -3,7 +3,6 @@ import { Oswald, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import LenisProvider from "@/components/LenisProvider";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -30,7 +29,7 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   title: "APEX Performance Studio — Haddon Township, NJ",
   description:
-    "A performance studio in Haddon Township. Six disciplines, three coaches, zero shortcuts. An hour at the limit — first one's on us.",
+    "Performance studio in Haddon Township NJ. Six disciplines, three resident coaches. An hour at the limit — first one's on us.",
   openGraph: {
     title: "APEX Performance Studio",
     description: "Haddon Township, NJ. An hour at the limit.",
@@ -42,8 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable} ${instrument.variable}`}>
       <body className="antialiased bg-[color:var(--color-ink)] text-[color:var(--color-cream)]">
-        <LenisProvider />
-        <div className="grain" aria-hidden />
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -1,11 +1,5 @@
-'use client';
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { classes } from '@/lib/data';
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
 const intensityScale: Record<string, number> = {
   'Low': 1,
@@ -67,85 +61,10 @@ const IntensityBar = ({ level, label }: { level: number; label: string }) => (
 );
 
 export default function Classes() {
-  const root = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const trig = root.current;
-      if (!trig) return;
-
-      // Headline mask reveal
-      gsap.fromTo(
-        '[data-cls-head]',
-        { clipPath: 'inset(0 100% 0 0)' },
-        {
-          clipPath: 'inset(0 0 0 0)',
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: trig, start: 'top 80%', once: true },
-        }
-      );
-
-      // Meta stack to the right of headline
-      gsap.fromTo(
-        '[data-cls-meta]',
-        { y: 24, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: trig, start: 'top 75%', once: true },
-        }
-      );
-
-      // Hairline rule draws
-      gsap.fromTo(
-        '[data-cls-rule]',
-        { scaleX: 0 },
-        {
-          scaleX: 1, duration: 1, ease: 'power3.out', transformOrigin: 'left center',
-          scrollTrigger: { trigger: trig, start: 'top 72%', once: true },
-        }
-      );
-
-      // HIIT — slow + intense entrance (the dominant card)
-      gsap.fromTo(
-        '[data-cls-hiit]',
-        { y: 60, opacity: 0, scale: 0.985 },
-        {
-          y: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out',
-          scrollTrigger: { trigger: '[data-cls-hiit]', start: 'top 80%', once: true },
-        }
-      );
-
-      // HIIT photo parallax
-      gsap.fromTo(
-        '[data-cls-hiit-img]',
-        { yPercent: -8 },
-        {
-          yPercent: 8, ease: 'none',
-          scrollTrigger: {
-            trigger: '[data-cls-hiit]', start: 'top bottom', end: 'bottom top', scrub: 0.7,
-          },
-        }
-      );
-
-      // Smaller cards — staggered after the dominant card commits
-      gsap.fromTo(
-        '[data-cls-card]',
-        { y: 32, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.85, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: '[data-cls-grid]', start: 'top 70%', once: true },
-        }
-      );
-    }, root);
-    return () => ctx.revert();
-  }, []);
-
   const hiitIntensity = intensityScale[hiit.intensity] ?? 5;
 
   return (
     <section
-      ref={root}
       id="classes"
       className="relative bg-[#0c0a08] text-[color:var(--color-cream)] py-24 sm:py-32 lg:py-40 overflow-hidden"
     >

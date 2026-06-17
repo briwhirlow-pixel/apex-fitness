@@ -2,36 +2,28 @@
 
 /* ════════════════════════════════════════════════════════════════
    APEX PERFORMANCE STUDIO — DESIGN TOKENS
-   Derived from fitness DNA: blood, iron, sweat, chalk, hardwood.
-   Warm near-black not blue-gray. Cream not pure white. APEX red.
+   Warm near-black, warm cream, APEX red.
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* surfaces — warm near-black with red cast */
-  --color-ink: #0a0807;
+  --color-ink: #0c0a08;
   --color-ink-alt: #14110d;
-  --color-ink-deep: #050302;
+  --color-ink-deep: #070503;
 
-  /* light surfaces — warm cream */
-  --color-cream: #f4ece0;
-  --color-cream-alt: #ebe2d2;
-  --color-cream-soft: #f8f2e8;
+  --color-cream: #f0ece4;
+  --color-cream-alt: #ede8de;
+  --color-cream-soft: #f4f0e8;
 
-  /* APEX brand red — primary accent */
   --color-red: #e41313;
   --color-red-deep: #b50e0e;
   --color-red-blood: #5c0606;
 
-  /* industrial neutrals */
   --color-steel: #8a8480;
   --color-text-muted: #847c70;
-  --color-text-muted-dark: #5c5650;
 
-  /* hairline borders */
   --color-border: rgba(228, 19, 19, 0.16);
   --color-border-cream: rgba(244, 236, 224, 0.12);
 
-  /* fonts */
   --font-display: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
@@ -41,10 +33,7 @@
    BASE
    ═══════════════════════════════════════════════════════════════ */
 
-html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
-html.lenis-stopped { overflow: hidden; }
-html.lenis { height: auto; }
-html.lenis body { height: auto; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--color-ink);
@@ -61,7 +50,6 @@ body {
 a, button { touch-action: manipulation; }
 img { display: block; max-width: 100%; }
 
-/* Display utility classes */
 .font-display {
   font-family: var(--font-display);
   font-weight: 700;
@@ -76,88 +64,21 @@ img { display: block; max-width: 100%; }
 }
 
 /* ════════════════════════════════════════════════════════════════
-   GRAIN — SVG noise overlay, fixed full-bleed, 3% opacity
-   ═══════════════════════════════════════════════════════════════ */
-
-.grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.06;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.65 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-/* ════════════════════════════════════════════════════════════════
-   GRADIENTS WITH GRAIN — never flat digital
-   ═══════════════════════════════════════════════════════════════ */
-
-.glow-red {
-  position: absolute;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at center,
-    rgba(228, 19, 19, 0.5) 0%,
-    rgba(228, 19, 19, 0.18) 28%,
-    transparent 65%
-  );
-  filter: blur(60px);
-}
-
-.mesh-bg {
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(228, 19, 19, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(92, 6, 6, 0.45) 0%, transparent 60%),
-    var(--color-ink);
-}
-
-/* ════════════════════════════════════════════════════════════════
-   MARQUEE — for ticker
-   ═══════════════════════════════════════════════════════════════ */
-
-@keyframes marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
-}
-
-.marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 32s linear infinite;
-  will-change: transform;
-}
-.marquee:hover { animation-play-state: paused; }
-
-/* ════════════════════════════════════════════════════════════════
-   PULSE — live dot
-   ═══════════════════════════════════════════════════════════════ */
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.55; transform: scale(0.78); }
-}
-
-.pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
-
-/* ════════════════════════════════════════════════════════════════
-   GLASS NAV — transparent until scroll
+   GLASS NAV — static blur, not an animation
    ═══════════════════════════════════════════════════════════════ */
 
 .glass-nav {
-  background: rgba(10, 8, 7, 0.72);
+  background: rgba(12, 10, 8, 0.78);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border-bottom: 1px solid var(--color-border);
 }
 
 /* ════════════════════════════════════════════════════════════════
-   BUTTONS
+   BUTTONS — hover transitions only (no entrance animation)
    ═══════════════════════════════════════════════════════════════ */
 
 .btn-solid-red {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -171,25 +92,14 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border: 1px solid var(--color-red);
-  overflow: hidden;
-  transition: color 280ms ease, transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: background-color 200ms ease, border-color 200ms ease;
 }
-.btn-solid-red::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+.btn-solid-red:hover {
   background: var(--color-red-deep);
-  transform: translateY(101%);
-  transition: transform 360ms cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
+  border-color: var(--color-red-deep);
 }
-.btn-solid-red > * { position: relative; z-index: 1; }
-.btn-solid-red:hover::before { transform: translateY(0); }
-.btn-solid-red:hover { transform: translateY(-2px); }
-.btn-solid-red:active { transform: translateY(0); }
 
 .btn-ghost {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -203,54 +113,10 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border: 1px solid rgba(244, 236, 224, 0.35);
-  overflow: hidden;
-  transition: color 280ms ease, transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1), border-color 280ms ease;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
-.btn-ghost::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+.btn-ghost:hover {
   background: var(--color-cream);
-  transform: translateY(101%);
-  transition: transform 360ms cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
-}
-.btn-ghost > * { position: relative; z-index: 1; }
-.btn-ghost:hover::before { transform: translateY(0); }
-.btn-ghost:hover { color: var(--color-ink); border-color: var(--color-cream); transform: translateY(-2px); }
-.btn-ghost:active { transform: translateY(0); }
-
-/* ════════════════════════════════════════════════════════════════
-   HAIRLINE DRAW — underlines, dividers
-   ═══════════════════════════════════════════════════════════════ */
-
-.hairline-red {
-  background: linear-gradient(to right, transparent, var(--color-red), transparent);
-  height: 1px;
-}
-
-/* ════════════════════════════════════════════════════════════════
-   GSAP REVEAL HELPERS — set initial states so SSR matches
-   ═══════════════════════════════════════════════════════════════ */
-
-.gs-up { opacity: 0; transform: translate3d(0, 40px, 0); }
-.gs-fade { opacity: 0; }
-.gs-mask { clip-path: inset(0 100% 0 0); }
-
-/* ════════════════════════════════════════════════════════════════
-   REDUCED MOTION
-   ═══════════════════════════════════════════════════════════════ */
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-  .gs-up, .gs-fade, .gs-mask {
-    opacity: 1 !important;
-    transform: none !important;
-    clip-path: none !important;
-  }
-  .marquee { animation: none !important; }
+  color: var(--color-ink);
+  border-color: var(--color-cream);
 }

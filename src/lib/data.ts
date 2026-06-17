@@ -23,7 +23,7 @@ export const classes = [
     intensity: "High",
     description: "Maximum effort, maximum results. Alternating explosive intervals with active recovery to torch calories and build cardiovascular capacity.",
     schedule: ["Mon 6:00 AM", "Wed 12:00 PM", "Fri 6:00 AM", "Sat 8:00 AM"],
-    trainer: "Darnell Banks",
+    trainer: "Dani Banks",
     spots: 16,
   },
   {
@@ -34,7 +34,7 @@ export const classes = [
     intensity: "Moderate–High",
     description: "Progressive strength training built around compound movements. Barbells, dumbbells, and functional patterns to develop real-world power.",
     schedule: ["Tue 7:00 AM", "Thu 6:00 PM", "Sat 10:00 AM"],
-    trainer: "Marcus Reid",
+    trainer: "Maya Reid",
     spots: 12,
   },
   {
@@ -56,7 +56,7 @@ export const classes = [
     intensity: "High",
     description: "Rhythm-based indoor cycling set to curated playlists. Every pedal stroke pushes you closer to your best performance — saddle up.",
     schedule: ["Tue 6:00 AM", "Thu 12:00 PM", "Sat 7:00 AM", "Sun 8:00 AM"],
-    trainer: "Marcus Reid",
+    trainer: "Maya Reid",
     spots: 24,
   },
   {
@@ -67,7 +67,7 @@ export const classes = [
     intensity: "High",
     description: "Boxing fundamentals meets full-body conditioning. Bag work, pad drills, and bodyweight circuits that build coordination and serious stamina.",
     schedule: ["Mon 6:00 PM", "Wed 7:00 AM", "Fri 6:00 PM"],
-    trainer: "Darnell Banks",
+    trainer: "Dani Banks",
     spots: 14,
   },
   {
@@ -85,11 +85,11 @@ export const classes = [
 
 export const trainers = [
   {
-    name: "Marcus Reid",
+    name: "Maya Reid",
     title: "Head Strength Coach",
     initials: "MR",
     specialty: "Powerlifting · Sports Performance",
-    bio: "Former D1 athlete with ten years of coaching across the spectrum — first-day novices to competitive powerlifters. Marcus argues strength is the floor under everything else.",
+    bio: "Former D1 athlete with ten years of coaching across the spectrum — first-day novices to competitive powerlifters. Maya argues strength is the floor under everything else.",
     certifications: ["CSCS", "NSCA-CPT", "FMS Level 2"],
     classes: ["Iron Temple", "Velocity Cycle"],
     teaches: "Mon · Tue · Thu · Sat",
@@ -105,11 +105,11 @@ export const trainers = [
     teaches: "Mon · Wed · Fri · Sun",
   },
   {
-    name: "Darnell Banks",
+    name: "Dani Banks",
     title: "HIIT & Combat Specialist",
     initials: "DB",
     specialty: "HIIT · Boxing · Conditioning",
-    bio: "Golden Gloves amateur turned conditioning coach. Darnell's hour is hard — and there is a real, demonstrable chance you will love every second of it.",
+    bio: "Golden Gloves amateur turned conditioning coach. Dani's hour is hard — and there is a real, demonstrable chance you will love every second of it.",
     certifications: ["NASM-CPT", "USA Boxing Coach", "HIIT Specialist"],
     classes: ["HIIT Forge", "Combat Ready"],
     teaches: "Mon · Wed · Fri · Sat",
@@ -180,7 +180,7 @@ export const testimonials = [
     name: "Ryan O.",
     initials: "RO",
     rating: 5,
-    text: "Marcus in Iron Temple is the best strength coach I've worked with. He corrected form issues I had for years inside the first session. My squat went up 40 lbs in two months.",
+    text: "Maya in Iron Temple is the best strength coach I've worked with. She corrected form issues I had for years inside the first session. My squat went up 40 lbs in two months.",
     highlight: "Squat PR up 40 lbs",
     class: "Iron Temple",
     date: "February 2026",

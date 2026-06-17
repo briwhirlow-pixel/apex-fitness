@@ -1,184 +1,86 @@
-'use client';
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
-
+/**
+ * Built for the committed.
+ *
+ * Layout: asymmetric 1fr / 1.6fr — text panel left, dominant image right.
+ * No stats grid. No § eyebrow. No italic underline. No decorative dashes.
+ * Background: warm cream (#f0ece4) per CLAUDE.md (warm, never clinical).
+ */
 export default function WhyApex() {
-  const root = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const trig = root.current;
-      if (!trig) return;
-
-      gsap.fromTo(
-        '[data-intro-img]',
-        { scale: 1.08, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 1.4,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: trig, start: 'top 75%', once: true },
-        }
-      );
-
-      gsap.fromTo(
-        '[data-intro-up]',
-        { y: 38, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.9,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: trig, start: 'top 70%', once: true },
-        }
-      );
-
-      // counter — animate the stat numbers
-      const counters = trig.querySelectorAll<HTMLElement>('[data-counter]');
-      counters.forEach((el) => {
-        const target = Number(el.dataset.counter || '0');
-        const obj = { v: 0 };
-        gsap.to(obj, {
-          v: target,
-          duration: 1.4,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-          onUpdate: () => {
-            el.textContent = String(Math.round(obj.v));
-          },
-        });
-      });
-    }, root);
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
-      ref={root}
       id="about"
-      className="relative bg-[color:var(--color-ink)] text-[color:var(--color-cream)] py-24 sm:py-36 overflow-hidden"
+      className="relative bg-[#f0ece4] text-[color:var(--color-ink)] py-24 sm:py-32 lg:py-40 overflow-hidden"
     >
-      {/* atmospheric red glow */}
-      <div aria-hidden className="glow-red absolute -top-24 -right-32 w-[520px] h-[520px] opacity-60" />
-
       <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-14">
 
-        {/* section eyebrow */}
-        <div data-intro-up className="flex items-center gap-4 mb-12 sm:mb-16">
-          <span className="block w-8 h-px bg-[color:var(--color-red)]" />
-          <span className="text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold">
-            § 02 — The Studio
-          </span>
-          <span className="block h-px flex-1 bg-[color:var(--color-border-cream)]" />
-          <span className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/35">
-            Haddon Twp · NJ
-          </span>
-        </div>
+        {/* ASYMMETRIC GRID — text 1fr, image 1.6fr (image dominates) */}
+        <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16 items-stretch">
 
-        {/* ASYMMETRIC GRID — 1.6fr 1fr feel */}
-        <div className="grid lg:grid-cols-[1.6fr_1fr] gap-10 lg:gap-16 items-start">
+          {/* TEXT PANEL LEFT */}
+          <div className="flex flex-col justify-between gap-10 lg:py-4">
+            <div>
+              <h2
+                className="font-display tracking-[-0.022em] leading-[0.86] text-[color:var(--color-ink)]"
+                style={{ fontSize: 'clamp(56px, 8.4vw, 132px)', fontWeight: 700 }}
+              >
+                BUILT FOR
+                <br />
+                THE COMMITTED
+                <span className="text-[#e41313]">.</span>
+              </h2>
 
-          {/* LEFT — image with crop marks */}
-          <div data-intro-img className="relative aspect-[5/4] lg:aspect-[6/5] overflow-hidden">
+              <p className="mt-8 sm:mt-10 text-[color:var(--color-ink)]/72 text-[15px] sm:text-[17px] leading-[1.75] font-light max-w-[44ch]">
+                Most gyms sell memberships. We sell the hour you would have skipped.
+                Six disciplines, three resident coaches, one floor in Haddon Township.
+                The coaches remember your numbers, your form, and what you said you&apos;d come back for.
+              </p>
+
+              <p className="mt-6 text-[color:var(--color-ink)]/55 text-[14px] sm:text-[15px] leading-[1.7] font-light max-w-[44ch]">
+                No salespeople disguised as trainers. No protein bars in the lobby.
+                Walk in, meet a coach, see if the floor fits.
+              </p>
+            </div>
+
+            {/* signature line, not an em-dash decoration — a sentence */}
+            <div className="pt-8 mt-4 border-t border-[color:var(--color-ink)]/15">
+              <p className="font-display text-[18px] sm:text-[20px] text-[color:var(--color-ink)] leading-[1.4]" style={{ fontWeight: 500 }}>
+                Filed under: standards.
+              </p>
+              <p className="mt-1 text-[12px] tracking-[0.22em] uppercase text-[color:var(--color-ink)]/45 font-medium">
+                Signed by the resident coaches
+              </p>
+              <a
+                href="/contact"
+                className="mt-7 inline-flex items-center gap-3 text-[11px] sm:text-[12px] tracking-[0.28em] uppercase font-semibold text-[color:var(--color-ink)] hover:text-[#e41313] transition-colors"
+              >
+                Visit the floor
+                <span aria-hidden className="block w-8 h-px bg-current transition-all duration-300 hover:w-14" />
+              </a>
+            </div>
+          </div>
+
+          {/* DOMINANT IMAGE RIGHT */}
+          <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[680px] overflow-hidden">
             <Image
               src="/images/about.jpg"
               alt="APEX training floor in Haddon Township"
               fill
-              className="object-cover"
               sizes="(min-width: 1024px) 60vw, 100vw"
+              className="object-cover"
             />
-            {/* dark wash */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/35 via-transparent to-transparent" />
-            {/* crop-mark corners */}
-            {(['top-2 left-2', 'top-2 right-2', 'bottom-2 left-2', 'bottom-2 right-2'] as const).map((pos) => (
-              <span key={pos} className={`absolute ${pos} w-4 h-4`} aria-hidden>
-                <span className="absolute inset-0 border-t border-l border-[color:var(--color-red)]" />
+            {/* small dark wash at bottom for caption legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/55 via-transparent to-transparent" />
+
+            {/* caption — single line, not a stat */}
+            <div className="absolute bottom-5 sm:bottom-7 left-5 sm:left-7 right-5 sm:right-7 flex items-baseline justify-between gap-4 text-[color:var(--color-cream)]">
+              <span className="font-display text-[16px] sm:text-[18px] tracking-[0.04em]" style={{ fontWeight: 600 }}>
+                The floor · 06:42 AM
               </span>
-            ))}
-            {/* film label */}
-            <div className="absolute bottom-3 left-3 text-[9px] tracking-[0.32em] uppercase text-[color:var(--color-cream)]/65 font-medium bg-[color:var(--color-ink)]/65 backdrop-blur px-2 py-1">
-              FLOOR · 06:42 AM
-            </div>
-          </div>
-
-          {/* RIGHT — copy + stat block */}
-          <div className="flex flex-col gap-7 lg:pt-4">
-
-            {/* huge headline */}
-            <h2
-              data-intro-up
-              className="font-display leading-[0.95] tracking-[-0.012em] text-[color:var(--color-cream)]"
-              style={{ fontSize: 'clamp(36px, 4.4vw, 64px)', fontWeight: 700 }}
-            >
-              BUILT FOR THE
-              <br />
-              <span className="font-serif-italic text-[color:var(--color-red)]" style={{ fontWeight: 400 }}>
-                committed
+              <span className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase opacity-65 font-medium">
+                Haddon Township, NJ
               </span>
-              <span className="text-[color:var(--color-red)]">.</span>
-            </h2>
-
-            <p data-intro-up className="text-[color:var(--color-cream)]/72 text-[15px] sm:text-[16px] leading-[1.75] font-light">
-              Most gyms sell memberships. We sell the hour you would have skipped — the one
-              that moved your numbers, your mood, your year. Six disciplines run by three
-              resident coaches who remember your name, your numbers, and what you said you&apos;d come back for.
-            </p>
-
-            <p data-intro-up className="text-[color:var(--color-cream)]/55 text-[14px] sm:text-[15px] leading-[1.7] font-light">
-              No salespeople disguised as trainers. No protein bars in the lobby. Walk in,
-              meet a coach, see if the floor fits. First hour is on us — that&apos;s the only
-              pitch you&apos;ll hear.
-            </p>
-
-            {/* STAT BLOCK — gold numbers (here: red), muted labels */}
-            <div data-intro-up className="grid grid-cols-2 gap-6 pt-7 mt-3 border-t border-[color:var(--color-border)]">
-              <div>
-                <div className="font-display text-[color:var(--color-red)] text-[42px] sm:text-[52px] leading-none">
-                  <span data-counter="40">40</span>+
-                </div>
-                <div className="mt-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/45 font-medium">
-                  Classes weekly
-                </div>
-              </div>
-              <div>
-                <div className="font-display text-[color:var(--color-red)] text-[42px] sm:text-[52px] leading-none">
-                  <span data-counter="85">85</span>k
-                </div>
-                <div className="mt-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/45 font-medium">
-                  Sq ft on the floor
-                </div>
-              </div>
-              <div>
-                <div className="font-display text-[color:var(--color-red)] text-[42px] sm:text-[52px] leading-none">
-                  03
-                </div>
-                <div className="mt-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/45 font-medium">
-                  Resident coaches
-                </div>
-              </div>
-              <div>
-                <div className="font-display text-[color:var(--color-red)] text-[42px] sm:text-[52px] leading-none">
-                  4.9★
-                </div>
-                <div className="mt-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/45 font-medium">
-                  Member rating
-                </div>
-              </div>
-            </div>
-
-            {/* signature line */}
-            <div data-intro-up className="pt-6 mt-2 border-t border-[color:var(--color-border-cream)] flex items-center justify-between text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/40 font-medium">
-              <span>— The Resident Coaches</span>
-              <a href="/contact" className="text-[color:var(--color-cream)]/80 hover:text-[color:var(--color-red)] transition-colors inline-flex items-center gap-2">
-                Visit the floor
-                <span aria-hidden className="block w-6 h-px bg-current" />
-              </a>
             </div>
           </div>
         </div>
