@@ -1,9 +1,22 @@
-import { classes } from '@/lib/data';
+'use client';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { classes } from '@/lib/data';
 
-const classImages: Record<string, string> = {
+if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+const intensityScale: Record<string, number> = {
+  'Low': 1,
+  'Low–Moderate': 2,
+  'Moderate–High': 4,
+  'High': 5,
+};
+
+const photoFor: Record<string, string> = {
   'hiit-forge': '/images/training.jpg',
-  'iron-temple': '/images/about.jpg',
+  'iron-temple': '/images/training.jpg',
   'flow-state': '/images/yoga.jpg',
   'velocity-cycle': '/images/cycling.jpg',
   'combat-ready': '/images/boxing.jpg',
@@ -11,65 +24,176 @@ const classImages: Record<string, string> = {
 };
 
 export default function Classes() {
+  const root = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const trig = root.current;
+      if (!trig) return;
+
+      gsap.fromTo(
+        '[data-svc-up]',
+        { y: 32, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: trig, start: 'top 75%', once: true },
+        }
+      );
+
+      gsap.fromTo(
+        '[data-svc-card]',
+        { y: 48, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.85,
+          stagger: 0.09,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: trig, start: 'top 65%', once: true },
+        }
+      );
+    }, root);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="classes" className="py-20 sm:py-24 bg-white">
-      <div className="max-w-[1170px] mx-auto px-6">
+    <section
+      ref={root}
+      id="classes"
+      className="relative bg-[color:var(--color-cream)] text-[color:var(--color-ink)] py-24 sm:py-36 overflow-hidden"
+    >
+      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-14">
 
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,40px)] font-semibold uppercase tracking-[0.03em] text-[#1a1a1a] mb-4">
-            Our Classes
-          </h2>
-          <p className="text-[#555] text-[16px] leading-[1.7]">
-            Six disciplines designed to challenge every level. From explosive HIIT intervals to recovery yoga — find the hour that moves you forward.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {classes.map((cls) => (
-            <a
-              key={cls.id}
-              href={`/classes#${cls.id}`}
-              className="group rounded-lg overflow-hidden bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] transition-shadow"
+        {/* Section masthead */}
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-16 sm:mb-20">
+          <div className="max-w-3xl">
+            <div data-svc-up className="flex items-center gap-4 mb-6">
+              <span className="block w-8 h-px bg-[color:var(--color-red)]" />
+              <span className="text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold">
+                § 03 — The Slate
+              </span>
+            </div>
+            <h2
+              data-svc-up
+              className="font-display tracking-[-0.018em] leading-[0.92] text-[color:var(--color-ink)]"
+              style={{ fontSize: 'clamp(48px, 8vw, 128px)', fontWeight: 700 }}
             >
-              <div className="relative h-[200px] overflow-hidden">
-                <Image
-                  src={classImages[cls.id] || '/images/training.jpg'}
-                  alt={cls.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-[#e41313] text-white text-[11px] font-semibold uppercase tracking-[0.06em] rounded-full px-3 py-1">
-                    {cls.category}
-                  </span>
-                </div>
-              </div>
+              SIX DISCIPLINES.
+              <br />
+              <span className="font-serif-italic text-[color:var(--color-red)]" style={{ fontWeight: 400 }}>
+                three
+              </span>{' '}
+              COACHES.
+            </h2>
+          </div>
 
-              <div className="p-5">
-                <h3 className="font-[family-name:var(--font-heading)] text-[20px] font-semibold uppercase tracking-[0.02em] text-[#1a1a1a] group-hover:text-[#e41313] transition-colors mb-2">
-                  {cls.name}
-                </h3>
-                <p className="text-[#555] text-[14px] leading-[1.6] mb-4 line-clamp-2">
-                  {cls.description}
-                </p>
-                <div className="flex items-center gap-3 text-[13px] text-[#999]">
-                  <span>{cls.duration}</span>
-                  <span className="w-1 h-1 rounded-full bg-[#ccc]" />
-                  <span>{cls.intensity}</span>
-                  <span className="w-1 h-1 rounded-full bg-[#ccc]" />
-                  <span>{cls.trainer}</span>
-                </div>
-              </div>
-            </a>
-          ))}
+          <div className="max-w-sm">
+            <p data-svc-up className="text-[color:var(--color-ink-alt)] text-[14px] sm:text-[15px] leading-[1.7] font-light">
+              Every hour periodized. Every set logged. Pick the discipline,
+              clock the hour — the coaches do the programming.
+            </p>
+          </div>
         </div>
 
-        <div className="text-center mt-12">
-          <a
-            href="/classes"
-            className="inline-block bg-[#e41313] text-white rounded-full px-9 py-3 text-[15px] font-semibold hover:bg-[#c10e0e] transition-colors"
-          >
-            View Full Schedule
+        {/* GRID — 6 disciplines, 3 cols desktop */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {classes.map((c, i) => {
+            const intensity = intensityScale[c.intensity] ?? 3;
+            const photo = photoFor[c.id] || '/images/hero-gym.jpg';
+            return (
+              <a
+                data-svc-card
+                key={c.id}
+                href={`/classes#${c.id}`}
+                className="group relative bg-[color:var(--color-ink)] text-[color:var(--color-cream)] overflow-hidden border border-[color:var(--color-ink)] hover:border-[color:var(--color-red)] transition-colors duration-500"
+              >
+                {/* photo backdrop */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={photo}
+                    alt={c.name}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover opacity-55 transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)] via-[color:var(--color-ink)]/55 to-[color:var(--color-ink)]/30" />
+
+                  <div className="absolute top-4 left-4 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-red)] font-semibold">
+                    Nº 0{i + 1}
+                  </div>
+
+                  <div className="absolute top-4 right-4 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/55 font-medium">
+                    {c.category}
+                  </div>
+
+                  <h3
+                    className="absolute left-5 right-5 bottom-5 font-display text-[color:var(--color-cream)] leading-[0.95] tracking-[-0.01em]"
+                    style={{ fontSize: 'clamp(28px, 3.4vw, 42px)', fontWeight: 700 }}
+                  >
+                    {c.name}
+                  </h3>
+                </div>
+
+                <div className="p-5 sm:p-6 flex flex-col gap-4">
+                  <p className="text-[color:var(--color-cream)]/65 text-[13px] sm:text-[14px] leading-[1.65] font-light">
+                    {c.description}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[color:var(--color-border-cream)]">
+                    <div>
+                      <div className="text-[9px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/40 font-medium mb-2">
+                        Intensity · {c.intensity}
+                      </div>
+                      <div className="flex items-end gap-1.5 h-5">
+                        {[1, 2, 3, 4, 5].map((b) => (
+                          <span
+                            key={b}
+                            className="flex-1 transition-all duration-300"
+                            style={{
+                              height: `${30 + b * 14}%`,
+                              background:
+                                b <= intensity
+                                  ? 'var(--color-red)'
+                                  : 'rgba(244,236,224,0.12)',
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-[9px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/40 font-medium mb-2">
+                        Coach
+                      </div>
+                      <div className="text-[13px] text-[color:var(--color-cream)]/90 font-light">
+                        {c.trainer}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-[color:var(--color-border)] text-[10px] tracking-[0.28em] uppercase font-semibold">
+                    <span className="text-[color:var(--color-cream)]/55">{c.duration} · {c.spots} spots</span>
+                    <span className="inline-flex items-center gap-2 text-[color:var(--color-red)] transition-all group-hover:gap-3">
+                      Open
+                      <span aria-hidden className="block w-5 h-px bg-current transition-all group-hover:w-9" />
+                    </span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="mt-14 sm:mt-16 flex items-center justify-between pt-7 border-t border-[color:var(--color-ink)]/10">
+          <span className="text-[10px] sm:text-[11px] tracking-[0.28em] uppercase text-[color:var(--color-ink-alt)]/65 font-medium">
+            Schedule live · updated weekly
+          </span>
+          <a href="/classes" className="group inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.28em] uppercase font-semibold text-[color:var(--color-ink)] hover:text-[color:var(--color-red)] transition-colors">
+            Full schedule
+            <span aria-hidden className="block w-7 h-px bg-current transition-all group-hover:w-12" />
           </a>
         </div>
       </div>

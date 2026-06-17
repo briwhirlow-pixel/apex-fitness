@@ -1,86 +1,130 @@
 import { siteConfig } from '@/lib/data';
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-[#1a1a1a] text-white">
-      <div className="max-w-[1170px] mx-auto px-6 pt-14 pb-8">
+    <footer className="relative bg-[color:var(--color-ink-deep)] text-[color:var(--color-cream)] border-t border-[color:var(--color-border)]">
+      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-14 pt-20 pb-10 sm:pt-24 sm:pb-12">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
-
-          {/* Brand */}
+        {/* TOP — massive wordmark */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 pb-14 sm:pb-16 border-b border-[color:var(--color-border-cream)]">
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 bg-[#e41313] rounded-sm flex items-center justify-center">
-                <span className="font-[family-name:var(--font-heading)] text-white text-[16px] font-bold leading-none">A</span>
-              </div>
-              <span className="font-[family-name:var(--font-heading)] text-[18px] font-semibold uppercase tracking-[0.06em]">APEX</span>
+            <div className="flex items-center gap-4 mb-5">
+              <span className="block w-8 h-px bg-[color:var(--color-red)]" />
+              <span className="text-[10px] sm:text-[11px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold">
+                The sign-off
+              </span>
             </div>
-            <p className="text-white/45 text-[14px] leading-[1.7]">
-              A performance studio in Lincoln Park. Six disciplines, three coaches, an hour we hope you remember.
-            </p>
+            <a href="/" className="block">
+              <span
+                className="font-display text-[color:var(--color-cream)] leading-[0.9] tracking-[-0.02em]"
+                style={{ fontSize: 'clamp(80px, 14vw, 200px)', fontWeight: 700 }}
+              >
+                APEX
+                <span className="font-serif-italic text-[color:var(--color-red)] ml-2" style={{ fontWeight: 400 }}>.</span>
+              </span>
+            </a>
+            <div className="mt-4 text-[10px] tracking-[0.32em] uppercase text-[color:var(--color-cream)]/45 font-medium">
+              Performance Studio · Haddon Township NJ
+            </div>
           </div>
 
-          {/* Quick links */}
+          {/* CTA stack */}
+          <div className="flex flex-col gap-3 lg:items-end">
+            <a href="/contact" className="btn-solid-red">
+              <span>Claim Trial Pass</span>
+              <span aria-hidden className="block w-6 h-px bg-current" />
+            </a>
+            <a href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`} className="text-[14px] tracking-[0.14em] uppercase text-[color:var(--color-cream)]/65 hover:text-[color:var(--color-red)] transition-colors font-medium">
+              {siteConfig.phone}
+            </a>
+          </div>
+        </div>
+
+        {/* INFO GRID */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mt-14 sm:mt-16">
+
+          {/* Visit */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] text-[14px] font-semibold uppercase tracking-[0.08em] text-white/70 mb-4">
-              Explore
-            </h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: 'Classes', href: '/classes' },
-                { label: 'Trainers', href: '/#trainers' },
-                { label: 'Pricing', href: '/pricing' },
-                { label: 'Contact', href: '/contact' },
-              ].map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="text-white/45 text-[14px] hover:text-white transition-colors">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold mb-4">
+              Visit
+            </div>
+            <address className="not-italic text-[14px] leading-[1.7] text-[color:var(--color-cream)]/75 font-light">
+              412 Haddon Ave<br />
+              Haddon Township, NJ 08108
+            </address>
+            <a
+              href="https://maps.google.com/?q=Haddon+Township+NJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/60 hover:text-[color:var(--color-red)] transition-colors font-medium"
+            >
+              Get directions
+              <span aria-hidden className="block w-5 h-px bg-current" />
+            </a>
           </div>
 
           {/* Hours */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] text-[14px] font-semibold uppercase tracking-[0.08em] text-white/70 mb-4">
-              Gym Hours
-            </h4>
-            <table className="text-[14px] text-white/45">
-              <tbody>
-                <tr><td className="pr-4 py-0.5">Mon – Fri</td><td>{siteConfig.hours.weekday}</td></tr>
-                <tr><td className="pr-4 py-0.5">Saturday</td><td>{siteConfig.hours.saturday}</td></tr>
-                <tr><td className="pr-4 py-0.5">Sunday</td><td>{siteConfig.hours.sunday}</td></tr>
-              </tbody>
-            </table>
+            <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold mb-4">
+              Hours
+            </div>
+            <ul className="space-y-1.5 text-[14px] leading-[1.5] text-[color:var(--color-cream)]/75 font-light tabular-nums">
+              <li className="flex justify-between"><span>Mon–Fri</span><span>{siteConfig.hours.weekday}</span></li>
+              <li className="flex justify-between"><span>Saturday</span><span>{siteConfig.hours.saturday}</span></li>
+              <li className="flex justify-between"><span>Sunday</span><span>{siteConfig.hours.sunday}</span></li>
+            </ul>
+            <div className="mt-4 flex items-center gap-2 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/60 font-medium">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[color:var(--color-red)] pulse-dot" />
+              Open now
+            </div>
           </div>
 
-          {/* Contact */}
+          {/* The Slate */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] text-[14px] font-semibold uppercase tracking-[0.08em] text-white/70 mb-4">
-              Contact
-            </h4>
-            <div className="text-[14px] text-white/45 space-y-2">
-              <p>{siteConfig.address}</p>
-              <p>
-                <a href={`tel:${siteConfig.phone}`} className="hover:text-white transition-colors">{siteConfig.phone}</a>
-              </p>
-              <p>
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors">{siteConfig.email}</a>
-              </p>
+            <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold mb-4">
+              The Slate
             </div>
+            <ul className="space-y-2 text-[14px] text-[color:var(--color-cream)]/75 font-light">
+              <li><a href="/classes" className="hover:text-[color:var(--color-red)] transition-colors">Disciplines</a></li>
+              <li><a href="/#trainers" className="hover:text-[color:var(--color-red)] transition-colors">Coaches</a></li>
+              <li><a href="/pricing" className="hover:text-[color:var(--color-red)] transition-colors">Pricing</a></li>
+              <li><a href="/contact" className="hover:text-[color:var(--color-red)] transition-colors">Visit</a></li>
+            </ul>
+          </div>
+
+          {/* Talk */}
+          <div>
+            <div className="text-[10px] tracking-[0.32em] uppercase text-[color:var(--color-red)] font-semibold mb-4">
+              Talk to us
+            </div>
+            <ul className="space-y-2 text-[14px] text-[color:var(--color-cream)]/75 font-light">
+              <li>
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-[color:var(--color-red)] transition-colors break-all">
+                  {siteConfig.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`} className="hover:text-[color:var(--color-red)] transition-colors">
+                  {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[color:var(--color-red)] transition-colors">
+                  {siteConfig.instagram}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-white/30">
-          <p>© {year} APEX Performance Studio. All rights reserved.</p>
-          <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white/60 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white/60 transition-colors">Terms of Use</a>
-          </div>
+        {/* COLOPHON */}
+        <div className="mt-16 sm:mt-20 pt-7 border-t border-[color:var(--color-border-cream)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/40 font-medium">
+          <span>© {new Date().getFullYear()} APEX Performance Studio · All rights reserved</span>
+          <span className="hidden sm:inline">Set in Oswald + Inter + Instrument Serif</span>
+          <a href="#top" className="hover:text-[color:var(--color-red)] transition-colors inline-flex items-center gap-2">
+            <span aria-hidden>↑</span>
+            Top
+          </a>
         </div>
       </div>
     </footer>

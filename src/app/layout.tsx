@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins, Oswald } from "next/font/google";
+import { Oswald, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-});
+import LenisProvider from "@/components/LenisProvider";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -18,20 +12,38 @@ const oswald = Oswald({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "APEX Performance Studio — Chicago",
-  description: "A performance studio in Lincoln Park. Six disciplines, three coaches, zero shortcuts. Trial pass on the house.",
+  title: "APEX Performance Studio — Haddon Township, NJ",
+  description:
+    "A performance studio in Haddon Township. Six disciplines, three coaches, zero shortcuts. An hour at the limit — first one's on us.",
   openGraph: {
     title: "APEX Performance Studio",
-    description: "Lincoln Park, Chicago. Trial pass on the house.",
+    description: "Haddon Township, NJ. An hour at the limit.",
     type: "website",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${oswald.variable}`}>
-      <body className="antialiased">
+    <html lang="en" className={`${oswald.variable} ${inter.variable} ${instrument.variable}`}>
+      <body className="antialiased bg-[color:var(--color-ink)] text-[color:var(--color-cream)]">
+        <LenisProvider />
+        <div className="grain" aria-hidden />
         <Navbar />
         <main>{children}</main>
         <Footer />
