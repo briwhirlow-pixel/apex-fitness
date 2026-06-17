@@ -1,202 +1,128 @@
 @import "tailwindcss";
 
-/* ════════════════════════════════════════════════════════════════
-   APEX PERFORMANCE STUDIO — Design tokens
-   ═══════════════════════════════════════════════════════════════ */
-
 @theme {
-  --color-ink: #0c0a08;
-  --color-ink-alt: #14110d;
-  --color-ink-deep: #070503;
+  --color-page: oklch(0.985 0 0);
+  --color-surface: oklch(0.96 0.003 250);
+  --color-ink: oklch(0.16 0.02 260);
+  --color-ink-muted: oklch(0.45 0.015 260);
+  --color-accent: oklch(0.40 0.11 170);
+  --color-accent-hover: oklch(0.34 0.10 170);
+  --color-accent-subtle: oklch(0.94 0.025 170);
+  --color-edge: oklch(0.88 0.005 260);
 
-  --color-cream: #f0ece4;
-  --color-cream-alt: #ede8de;
-  --color-cream-soft: #f4f0e8;
-
-  --color-red: #e41313;
-  --color-red-deep: #b50e0e;
-  --color-red-blood: #5c0606;
-
-  --color-steel: #8a8480;
-  --color-text-muted: #847c70;
-
-  --color-border: rgba(228, 19, 19, 0.16);
-  --color-border-cream: rgba(244, 236, 224, 0.12);
-
-  --font-display: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* ════════════════════════════════════════════════════════════════
-   BASE
-   ═══════════════════════════════════════════════════════════════ */
-
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-cream);
+  background: var(--color-page);
+  color: var(--color-ink);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
-::selection { background: var(--color-red); color: var(--color-cream); }
-
+::selection { background: var(--color-accent); color: white; }
 a, button { touch-action: manipulation; }
 img { display: block; max-width: 100%; }
 
 .font-display {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.005em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
-/* ════════════════════════════════════════════════════════════════
-   KEN BURNS — slow zoom on hero photo
-   ═══════════════════════════════════════════════════════════════ */
-
-@keyframes ken-burns {
-  0%   { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.12) translate(-1%, -1.5%); }
-}
-
-.ken-burns {
-  animation: ken-burns 18s ease-out forwards;
-  will-change: transform;
-}
-
-/* ════════════════════════════════════════════════════════════════
-   REVEAL UP — fade + 24px translate on scroll-into-view
-   ═══════════════════════════════════════════════════════════════ */
+/* ── Scroll reveal ───────────────────────────────────── */
 
 .reveal-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
   transition:
-    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-
-.reveal-up.in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* stagger helpers */
+.reveal-up.in { opacity: 1; transform: translateY(0); }
 .reveal-d1 { transition-delay: 80ms; }
 .reveal-d2 { transition-delay: 160ms; }
 .reveal-d3 { transition-delay: 240ms; }
 .reveal-d4 { transition-delay: 320ms; }
 
-/* ════════════════════════════════════════════════════════════════
-   GLASS NAV
-   ═══════════════════════════════════════════════════════════════ */
+/* ── Nav ─────────────────────────────────────────────── */
 
-.glass-nav {
-  background: rgba(12, 10, 8, 0.85);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border-bottom: 1px solid rgba(228, 19, 19, 0.22);
+.nav-scrolled {
+  background: oklch(1 0 0 / 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 oklch(0 0 0 / 0.06);
 }
 
-/* ════════════════════════════════════════════════════════════════
-   BUTTONS — commercial-chain style
-   ═══════════════════════════════════════════════════════════════ */
+/* ── Buttons — light context ─────────────────────────── */
 
-.btn-solid-red {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: var(--color-red);
-  color: var(--color-cream);
-  padding: 20px 36px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border: 1px solid var(--color-red);
-  transition:
-    background-color 200ms ease,
-    border-color 200ms ease,
-    transform 200ms ease;
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  background: var(--color-accent); color: white;
+  padding: 16px 32px;
+  font-family: var(--font-display); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.01em;
+  transition: background-color 200ms ease, transform 150ms ease;
 }
-.btn-solid-red:hover {
-  background: var(--color-red-deep);
-  border-color: var(--color-red-deep);
-  transform: translateY(-2px);
-}
-.btn-solid-red:active { transform: translateY(0); }
+.btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
 
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: transparent;
-  color: var(--color-cream);
-  padding: 20px 36px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border: 1px solid rgba(244, 236, 224, 0.45);
-  transition:
-    background-color 200ms ease,
-    color 200ms ease,
-    border-color 200ms ease,
-    transform 200ms ease;
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  background: transparent; color: var(--color-ink);
+  padding: 16px 32px;
+  font-family: var(--font-display); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.01em;
+  border: 1.5px solid var(--color-edge);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 150ms ease;
 }
-.btn-ghost:hover {
-  background: var(--color-cream);
-  color: var(--color-ink);
-  border-color: var(--color-cream);
-  transform: translateY(-2px);
-}
-.btn-ghost:active { transform: translateY(0); }
+.btn-outline:hover { background: var(--color-ink); color: white; border-color: var(--color-ink); transform: translateY(-1px); }
+.btn-outline:active { transform: translateY(0); }
 
-/* small inline button for the utility bar */
-.btn-utility {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color-cream);
-  letter-spacing: 0.04em;
-  transition: color 180ms ease;
-}
-.btn-utility:hover { color: var(--color-red); }
+/* ── Buttons — dark context (hero, footer) ───────────── */
 
-/* ════════════════════════════════════════════════════════════════
-   PROGRAM CARDS — subtle hover lift
-   ═══════════════════════════════════════════════════════════════ */
+.btn-primary-light {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  background: white; color: var(--color-ink);
+  padding: 16px 32px;
+  font-family: var(--font-display); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.01em;
+  transition: background-color 200ms ease, transform 150ms ease;
+}
+.btn-primary-light:hover { background: oklch(0.94 0 0); transform: translateY(-1px); }
+.btn-primary-light:active { transform: translateY(0); }
 
-.program-card {
-  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+.btn-ghost-light {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  background: transparent; color: white;
+  padding: 16px 32px;
+  font-family: var(--font-display); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.01em;
+  border: 1.5px solid oklch(1 0 0 / 0.3);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 150ms ease;
 }
-.program-card:hover {
-  transform: translateY(-4px);
-}
-.program-card .program-img {
-  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.program-card:hover .program-img {
-  transform: scale(1.06);
-}
+.btn-ghost-light:hover { background: oklch(1 0 0 / 0.12); border-color: oklch(1 0 0 / 0.5); transform: translateY(-1px); }
+.btn-ghost-light:active { transform: translateY(0); }
 
-/* ════════════════════════════════════════════════════════════════
-   REDUCED MOTION
-   ═══════════════════════════════════════════════════════════════ */
+/* ── Card hover ──────────────────────────────────────── */
+
+.program-card { transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); }
+.program-card:hover { transform: translateY(-3px); }
+.program-card .program-img { transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1); }
+.program-card:hover .program-img { transform: scale(1.04); }
+
+/* ── Reduced motion ──────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -205,5 +131,4 @@ img { display: block; max-width: 100%; }
     animation-iteration-count: 1 !important;
   }
   .reveal-up { opacity: 1 !important; transform: none !important; }
-  .ken-burns { animation: none !important; }
 }

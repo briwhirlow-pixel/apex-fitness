@@ -13,7 +13,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -24,81 +24,78 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
+  const textClass = scrolled || open
+    ? 'text-ink-muted hover:text-ink'
+    : 'text-white/80 hover:text-white';
+
+  const logoClass = scrolled || open ? 'text-ink' : 'text-white';
+  const barClass = scrolled || open ? 'bg-ink' : 'bg-white';
+
   return (
     <header
       id="top"
-      className={`fixed left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? 'glass-nav top-0 md:top-9'
-          : 'bg-transparent top-0 md:top-9'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || open ? 'nav-scrolled' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-14 h-[64px] md:h-[72px] flex items-center justify-between gap-6">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 h-[72px] flex items-center justify-between gap-6">
 
-        {/* LOGO */}
-        <a href="/" className="flex items-center gap-3 select-none">
-          <div className="w-10 h-10 bg-[#e41313] flex items-center justify-center">
-            <span className="font-display text-[color:var(--color-cream)] text-[22px] leading-none" style={{ fontWeight: 700 }}>
-              A
-            </span>
-          </div>
-          <div className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display text-[19px] text-[color:var(--color-cream)] tracking-[0.04em]" style={{ fontWeight: 700 }}>
-              APEX
-            </span>
-            <span className="text-[9px] tracking-[0.32em] uppercase text-[color:var(--color-cream)]/55 font-medium mt-0.5">
-              Performance Studio
-            </span>
-          </div>
+        <a href="/" className="flex items-center gap-2.5 select-none">
+          <span
+            className={`font-display text-[22px] transition-colors duration-300 ${logoClass}`}
+          >
+            APEX
+          </span>
+          <span
+            className={`hidden sm:block text-[11px] tracking-[0.06em] font-medium transition-colors duration-300 ${
+              scrolled || open ? 'text-ink-muted' : 'text-white/55'
+            }`}
+          >
+            Performance Studio
+          </span>
         </a>
 
-        {/* CENTER NAV */}
         <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className="font-display text-[13px] tracking-[0.14em] uppercase text-[color:var(--color-cream)]/85 hover:text-[color:var(--color-red)] transition-colors"
-              style={{ fontWeight: 600 }}
+              className={`text-[13px] font-medium tracking-[0.01em] transition-colors duration-300 ${textClass}`}
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        {/* RIGHT — Free Pass */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
             href="/#freepass"
-            className="bg-[#e41313] hover:bg-[#b50e0e] text-[color:var(--color-cream)] inline-flex items-center gap-2 px-5 py-3 font-display text-[12px] tracking-[0.16em] uppercase transition-colors"
-            style={{ fontWeight: 700 }}
+            className="inline-flex items-center px-4 py-2.5 bg-accent text-white text-[13px] font-semibold tracking-[0.01em] hover:bg-accent-hover transition-colors"
           >
             Free Pass
           </a>
-        </div>
 
-        {/* MOBILE TOGGLE */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="lg:hidden p-2 -mr-2 flex flex-col gap-[5px] w-9 items-end"
-          aria-label="Menu"
-        >
-          <span className={`h-px bg-[color:var(--color-cream)] transition-all duration-200 ${open ? 'w-6 rotate-45 translate-y-[6px]' : 'w-6'}`} />
-          <span className={`h-px bg-[color:var(--color-cream)] transition-opacity duration-200 ${open ? 'w-6 opacity-0' : 'w-4'}`} />
-          <span className={`h-px bg-[color:var(--color-cream)] transition-all duration-200 ${open ? 'w-6 -rotate-45 -translate-y-[6px]' : 'w-5'}`} />
-        </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden p-2.5 -mr-2 flex flex-col gap-[5px] w-9 items-end"
+            aria-label="Menu"
+          >
+            <span className={`h-[1.5px] transition-all duration-200 ${barClass} ${open ? 'w-5 rotate-45 translate-y-[6.5px]' : 'w-5'}`} />
+            <span className={`h-[1.5px] transition-opacity duration-200 ${barClass} ${open ? 'w-5 opacity-0' : 'w-3.5'}`} />
+            <span className={`h-[1.5px] transition-all duration-200 ${barClass} ${open ? 'w-5 -rotate-45 -translate-y-[6.5px]' : 'w-4'}`} />
+          </button>
+        </div>
       </div>
 
-      {/* MOBILE SHEET */}
       {open && (
-        <div className="lg:hidden fixed inset-0 top-[64px] bg-[#0c0a08] z-40 flex flex-col px-6 pt-8 pb-12">
+        <div className="lg:hidden fixed inset-0 top-[72px] bg-white z-40 flex flex-col px-5 pt-6 pb-8 overflow-y-auto">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="py-4 border-b border-[color:var(--color-cream)]/10 font-display text-[28px] sm:text-[34px] leading-none tracking-[-0.005em] text-[color:var(--color-cream)] hover:text-[#e41313] transition-colors"
-              style={{ fontWeight: 700 }}
+              className="py-4 border-b border-edge font-display text-[24px] sm:text-[28px] leading-none text-ink hover:text-accent transition-colors"
+              style={{ fontWeight: 600 }}
             >
               {l.label}
             </a>
@@ -106,9 +103,9 @@ export default function Navbar() {
           <a
             href="/#freepass"
             onClick={() => setOpen(false)}
-            className="btn-solid-red mt-8 w-full"
+            className="btn-primary mt-6 w-full"
           >
-            <span>Get Your Free Pass</span>
+            Get Your Free Pass
           </a>
         </div>
       )}

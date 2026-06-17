@@ -7,84 +7,62 @@ const photoFor: Record<string, string> = {
   'Dani Banks': '/images/boxing.jpg',
 };
 
-/**
- * Coaches — three resident coaches.
- * Featured coach gets a wider card (asymmetric 1.4fr / 1fr / 1fr).
- * Photo with bottom-overlay name + role + bio + classes taught.
- */
 export default function Trainers() {
-  const [head, second, third] = trainers;
-
   return (
-    <section id="trainers" className="relative bg-[#100e0b] py-20 sm:py-28 lg:py-32">
-      <div className="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-14">
+    <section id="trainers" className="py-16 sm:py-24 lg:py-28 bg-surface">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
 
-        {/* opener */}
-        <div className="reveal-up grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-12 items-end mb-12 sm:mb-16">
-          <div>
-            <div className="font-display text-[12px] tracking-[0.32em] uppercase text-[#e41313] mb-4" style={{ fontWeight: 700 }}>
-              Resident Coaches
-            </div>
-            <h2
-              className="font-display text-[color:var(--color-cream)] leading-[0.88] tracking-[-0.015em]"
-              style={{ fontSize: 'clamp(44px, 7vw, 112px)', fontWeight: 700 }}
-            >
-              ON THE FLOOR.
-              <br />
-              EVERY HOUR<span className="text-[#e41313]">.</span>
-            </h2>
-          </div>
-          <p className="text-[color:var(--color-cream)]/72 text-[15px] sm:text-[16px] leading-[1.7] font-light max-w-md">
+        <div className="reveal-up max-w-2xl mb-12 sm:mb-16">
+          <h2
+            className="font-display text-ink leading-[0.92] text-balance"
+            style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}
+          >
+            On the floor. Every hour.
+          </h2>
+          <p className="mt-4 text-ink-muted text-[16px] leading-[1.65] max-w-lg text-pretty">
             Three residents who run the floor. They remember your numbers, your form, and what you said you would come back for.
           </p>
         </div>
 
-        {/* GRID — featured 1.4fr / 1fr / 1fr */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1fr] gap-3 sm:gap-4">
-          {[head, second, third].map((t, idx) => {
-            const featured = idx === 0;
+        <div className="flex flex-col gap-5 sm:gap-6">
+          {trainers.map((t, idx) => {
+            const isReversed = idx % 2 === 1;
             return (
               <article
                 key={t.name}
-                className={`program-card reveal-up relative overflow-hidden bg-[#0c0a08] ${
-                  idx === 0 ? '' : idx === 1 ? 'reveal-d1' : 'reveal-d2'
-                } ${featured ? 'min-h-[460px] lg:min-h-[640px]' : 'min-h-[380px] lg:min-h-[640px]'}`}
+                className={`reveal-up ${idx === 1 ? 'reveal-d1' : idx === 2 ? 'reveal-d2' : ''} grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden bg-white`}
               >
-                <div className="program-img absolute inset-0">
+                <div className={`relative min-h-[280px] sm:min-h-[340px] lg:min-h-[420px] ${isReversed ? 'lg:order-2' : ''}`}>
                   <Image
                     src={photoFor[t.name]}
                     alt={`${t.name}, ${t.title}`}
                     fill
-                    sizes={featured ? '(min-width: 1024px) 42vw, 100vw' : '(min-width: 1024px) 29vw, 100vw'}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/55 to-transparent" />
-
-                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-8">
-                  <div className="font-display text-[11px] tracking-[0.32em] uppercase text-[#e41313] mb-3" style={{ fontWeight: 700 }}>
+                <div className={`p-6 sm:p-8 lg:p-12 flex flex-col justify-center ${isReversed ? 'lg:order-1' : ''}`}>
+                  <div className="text-[12px] tracking-[0.04em] font-semibold text-accent mb-3">
+                    {t.specialty}
+                  </div>
+                  <h3 className="font-display text-ink leading-[0.94]" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
+                    {t.name}
+                  </h3>
+                  <div className="text-[14px] text-ink-muted font-medium mt-1 mb-4">
                     {t.title}
                   </div>
-                  <h3
-                    className="font-display text-[color:var(--color-cream)] leading-[0.9] tracking-[-0.012em]"
-                    style={{
-                      fontSize: featured ? 'clamp(32px, 4vw, 56px)' : 'clamp(26px, 3vw, 38px)',
-                      fontWeight: 700,
-                    }}
-                  >
-                    {t.name.toUpperCase()}
-                  </h3>
-                  <p
-                    className={`mt-3 text-[color:var(--color-cream)]/75 leading-[1.65] font-light ${
-                      featured ? 'text-[14px] sm:text-[15px]' : 'text-[13px]'
-                    }`}
-                  >
-                    {featured ? t.bio : t.specialty}
+                  <p className="text-[15px] text-ink-muted leading-[1.65] text-pretty">
+                    {t.bio}
                   </p>
-                  <div className="mt-5 pt-4 border-t border-[color:var(--color-cream)]/15 flex items-center justify-between">
-                    <span className="text-[10px] tracking-[0.28em] uppercase text-[color:var(--color-cream)]/55 font-medium">
-                      Teaches {t.classes.join(' · ')}
-                    </span>
+                  <div className="mt-6 pt-5 border-t border-edge flex flex-wrap items-center gap-2">
+                    {t.certifications.map((cert) => (
+                      <span key={cert} className="text-[11px] tracking-[0.04em] font-semibold text-ink-muted px-2.5 py-1.5 border border-edge">
+                        {cert}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-[13px] text-ink-muted">
+                    Teaches {t.teaches}
                   </div>
                 </div>
               </article>

@@ -1,30 +1,14 @@
 import type { Metadata } from "next";
-import { Oswald, Inter, Instrument_Serif } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
-import UtilityStrip from "@/components/UtilityStrip";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 
-const oswald = Oswald({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-oswald",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const instrument = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -58,15 +42,14 @@ const localBusinessSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${oswald.variable} ${inter.variable} ${instrument.variable}`}>
+    <html lang="en" className={outfit.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
-      <body className="antialiased bg-[#0c0a08] text-[color:var(--color-cream)]">
-        <UtilityStrip />
+      <body>
         <Navbar />
         <Reveal />
         <main>{children}</main>
