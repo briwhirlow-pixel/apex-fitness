@@ -10,7 +10,7 @@ export default function Hero() {
           alt="APEX Performance Studio training floor"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
           sizes="100vw"
         />
       </div>
