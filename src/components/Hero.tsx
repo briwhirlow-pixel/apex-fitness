@@ -3,19 +3,19 @@ import { siteConfig } from '@/lib/data';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden">
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
       <div className="absolute inset-0">
         <Image
           src="/images/hero-gym.jpg"
           alt="APEX Performance Studio training floor"
           fill
           priority
-          className="object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
+          className="object-contain object-top md:object-cover md:object-center"
           sizes="100vw"
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/45 to-black/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80 md:from-black/25 md:via-black/45 md:to-black/75" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 pt-36 sm:pt-44 pb-16 sm:pb-24 min-h-[100svh] flex flex-col justify-end">
 
