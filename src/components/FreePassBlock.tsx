@@ -45,7 +45,8 @@ export default function FreePassBlock() {
                   type="text"
                   name="name"
                   required
-                  className="w-full border border-edge px-4 py-3 text-[15px] text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-accent transition-colors"
+                  autoComplete="given-name"
+                  className="w-full border border-edge px-4 py-3.5 text-[16px] text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-accent transition-colors"
                   placeholder="Your name"
                 />
               </label>
@@ -58,7 +59,8 @@ export default function FreePassBlock() {
                   type="email"
                   name="email"
                   required
-                  className="w-full border border-edge px-4 py-3 text-[15px] text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-accent transition-colors"
+                  autoComplete="email"
+                  className="w-full border border-edge px-4 py-3.5 text-[16px] text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-accent transition-colors"
                   placeholder="you@example.com"
                 />
               </label>
@@ -71,7 +73,7 @@ export default function FreePassBlock() {
                   name="class"
                   required
                   defaultValue=""
-                  className="w-full border border-edge px-4 py-3 text-[15px] text-ink focus:outline-none focus:border-accent transition-colors bg-white"
+                  className="w-full border border-edge px-4 py-3.5 text-[16px] text-ink focus:outline-none focus:border-accent transition-colors bg-white"
                 >
                   <option value="" disabled>Choose a discipline</option>
                   <option value="hiit-forge">HIIT Forge</option>

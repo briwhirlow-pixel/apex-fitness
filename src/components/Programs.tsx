@@ -83,13 +83,13 @@ export default function Programs() {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                <div className="text-[10px] tracking-[0.04em] font-medium text-white/50 mb-1.5">
+                <div className="text-[11px] tracking-[0.04em] font-medium text-white/50 mb-1.5">
                   {c.category} · {c.duration}
                 </div>
                 <h3 className="font-display text-white leading-[0.94]" style={{ fontSize: 'clamp(20px, 2.5vw, 28px)' }}>
                   {c.name}
                 </h3>
-                <div className="mt-2 text-[11px] text-white/40 font-medium">
+                <div className="mt-2 text-[12px] text-white/40 font-medium">
                   w/ {c.trainer}
                 </div>
               </div>

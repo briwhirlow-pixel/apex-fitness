@@ -20,7 +20,7 @@ export default function Footer() {
             </a>
             <a
               href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`}
-              className="text-[13px] font-medium text-white/50 hover:text-white transition-colors"
+              className="text-[13px] font-medium text-white/50 hover:text-white transition-colors py-2 -my-2 block"
             >
               {siteConfig.phone}
             </a>
@@ -30,46 +30,46 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10 sm:mt-12">
           <div>
             <div className="text-[12px] tracking-[0.04em] font-semibold text-white/35 mb-4">Studio</div>
-            <ul className="space-y-3 text-[14px] text-white/60">
-              <li><a href="/#trainers" className="hover:text-white transition-colors">Coaches</a></li>
-              <li><a href="/#contact" className="hover:text-white transition-colors">Visit</a></li>
-              <li><a href="/#freepass" className="hover:text-white transition-colors">Trial pass</a></li>
+            <ul className="space-y-1 text-[14px] text-white/60">
+              <li><a href="/#trainers" className="hover:text-white transition-colors py-2 block">Coaches</a></li>
+              <li><a href="/#contact" className="hover:text-white transition-colors py-2 block">Visit</a></li>
+              <li><a href="/#freepass" className="hover:text-white transition-colors py-2 block">Trial pass</a></li>
             </ul>
           </div>
           <div>
             <div className="text-[12px] tracking-[0.04em] font-semibold text-white/35 mb-4">Programs</div>
-            <ul className="space-y-3 text-[14px] text-white/60">
+            <ul className="space-y-1 text-[14px] text-white/60">
               {classes.slice(0, 4).map((c) => (
                 <li key={c.id}>
-                  <a href="/#programs" className="hover:text-white transition-colors">{c.name}</a>
+                  <a href="/#programs" className="hover:text-white transition-colors py-2 block">{c.name}</a>
                 </li>
               ))}
-              <li><a href="/#programs" className="hover:text-white transition-colors font-medium">All programs</a></li>
+              <li><a href="/#programs" className="hover:text-white transition-colors font-medium py-2 block">All programs</a></li>
             </ul>
           </div>
           <div>
             <div className="text-[12px] tracking-[0.04em] font-semibold text-white/35 mb-4">Membership</div>
-            <ul className="space-y-3 text-[14px] text-white/60">
-              <li><a href="/#memberships" className="hover:text-white transition-colors">Drop-In</a></li>
-              <li><a href="/#memberships" className="hover:text-white transition-colors">Monthly</a></li>
-              <li><a href="/#memberships" className="hover:text-white transition-colors">Annual</a></li>
+            <ul className="space-y-1 text-[14px] text-white/60">
+              <li><a href="/#memberships" className="hover:text-white transition-colors py-2 block">Drop-In</a></li>
+              <li><a href="/#memberships" className="hover:text-white transition-colors py-2 block">Monthly</a></li>
+              <li><a href="/#memberships" className="hover:text-white transition-colors py-2 block">Annual</a></li>
             </ul>
           </div>
           <div>
             <div className="text-[12px] tracking-[0.04em] font-semibold text-white/35 mb-4">Connect</div>
-            <ul className="space-y-3 text-[14px] text-white/60">
+            <ul className="space-y-1 text-[14px] text-white/60">
               <li>
-                <a href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`} className="hover:text-white transition-colors">
+                <a href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`} className="hover:text-white transition-colors py-2 block">
                   {siteConfig.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors break-all">
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors break-all py-2 block">
                   {siteConfig.email}
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">{siteConfig.instagram}</a>
+                <a href="#" className="hover:text-white transition-colors py-2 block">{siteConfig.instagram}</a>
               </li>
             </ul>
           </div>
@@ -79,10 +79,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[12px] text-white/30 font-medium">
           <span>&copy; {new Date().getFullYear()} APEX Performance Studio</span>
-          <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#top" className="hover:text-white transition-colors">Back to top</a>
+          <div className="flex items-center gap-3">
+            <a href="#" className="hover:text-white transition-colors py-2 px-1">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors py-2 px-1">Terms</a>
+            <a href="#top" className="hover:text-white transition-colors py-2 px-1">Back to top</a>
           </div>
         </div>
       </div>

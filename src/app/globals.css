@@ -15,11 +15,15 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 body {
   background: var(--color-page);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 16px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -27,7 +31,7 @@ body {
 }
 
 ::selection { background: var(--color-accent); color: white; }
-a, button { touch-action: manipulation; }
+a, button, input, select, textarea { touch-action: manipulation; }
 img { display: block; max-width: 100%; }
 
 .font-display {

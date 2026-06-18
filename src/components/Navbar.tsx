@@ -24,6 +24,15 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
   const textClass = scrolled || open
     ? 'text-ink-muted hover:text-ink'
     : 'text-white/80 hover:text-white';
@@ -70,15 +79,16 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="/#freepass"
-            className="inline-flex items-center px-4 py-2.5 bg-accent text-white text-[13px] font-semibold tracking-[0.01em] hover:bg-accent-hover transition-colors"
+            className="inline-flex items-center px-4 py-3 min-h-[44px] bg-accent text-white text-[13px] font-semibold tracking-[0.01em] hover:bg-accent-hover transition-colors"
           >
             Free Pass
           </a>
 
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2.5 -mr-2 flex flex-col gap-[5px] w-9 items-end"
+            className="lg:hidden p-2.5 -mr-2 flex flex-col gap-[5px] min-w-[44px] min-h-[44px] items-end justify-center"
             aria-label="Menu"
+            aria-expanded={open}
           >
             <span className={`h-[1.5px] transition-all duration-200 ${barClass} ${open ? 'w-5 rotate-45 translate-y-[6.5px]' : 'w-5'}`} />
             <span className={`h-[1.5px] transition-opacity duration-200 ${barClass} ${open ? 'w-5 opacity-0' : 'w-3.5'}`} />

@@ -56,7 +56,7 @@ export default function Trainers() {
                   </p>
                   <div className="mt-6 pt-5 border-t border-edge flex flex-wrap items-center gap-2">
                     {t.certifications.map((cert) => (
-                      <span key={cert} className="text-[11px] tracking-[0.04em] font-semibold text-ink-muted px-2.5 py-1.5 border border-edge">
+                      <span key={cert} className="text-[12px] tracking-[0.04em] font-semibold text-ink-muted px-2.5 py-1.5 border border-edge">
                         {cert}
                       </span>
                     ))}

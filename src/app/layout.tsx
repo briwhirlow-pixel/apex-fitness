@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -11,6 +11,12 @@ const outfit = Outfit({
   variable: "--font-outfit",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "APEX Performance Studio — West Chester, PA",
@@ -48,6 +54,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
+        <noscript>
+          <style>{`.reveal-up { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
       </head>
       <body>
         <Navbar />

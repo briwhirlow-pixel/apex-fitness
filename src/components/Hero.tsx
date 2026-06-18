@@ -55,7 +55,7 @@ export default function Hero() {
             </div>
             <a
               href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`}
-              className="text-[13px] sm:text-[14px] font-light text-white/85 hover:text-white transition-colors"
+              className="text-[13px] sm:text-[14px] font-light text-white/85 hover:text-white transition-colors py-2 -my-2 block"
             >
               {siteConfig.phone}
             </a>
@@ -64,7 +64,7 @@ export default function Hero() {
             <div className="text-[11px] tracking-[0.04em] font-medium text-white/45 mb-1">
               First class
             </div>
-            <a href="/#freepass" className="text-[13px] sm:text-[14px] font-light text-white/85 hover:text-white transition-colors">
+            <a href="/#freepass" className="text-[13px] sm:text-[14px] font-light text-white/85 hover:text-white transition-colors py-2 -my-2 block">
               On the house
             </a>
           </div>

@@ -21,12 +21,12 @@ export default function Locator() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-4 sm:gap-5">
-          <div className="reveal-up relative aspect-[4/3] lg:aspect-auto lg:min-h-[480px] overflow-hidden border border-edge">
+          <div className="reveal-up relative aspect-[4/3] lg:aspect-auto lg:min-h-[480px] overflow-hidden border border-edge touch-pan-y">
             <iframe
               src={mapEmbedSrc}
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, pointerEvents: 'auto' }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title={`Map of ${siteConfig.city}, ${siteConfig.region}`}
@@ -50,21 +50,21 @@ export default function Locator() {
               <div className="text-[12px] tracking-[0.04em] font-semibold text-accent mb-3">
                 Get in touch
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 <a
                   href={`tel:${siteConfig.phone.replace(/[^\d]/g, '')}`}
-                  className="font-display text-ink hover:text-accent transition-colors leading-none"
+                  className="font-display text-ink hover:text-accent transition-colors leading-none py-2 block"
                   style={{ fontSize: 'clamp(20px, 2.4vw, 28px)' }}
                 >
                   {siteConfig.phone}
                 </a>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-[14px] text-ink-muted hover:text-accent transition-colors break-all"
+                  className="text-[14px] text-ink-muted hover:text-accent transition-colors break-all py-2 block"
                 >
                   {siteConfig.email}
                 </a>
-                <a href="#" className="text-[14px] text-ink-muted hover:text-accent transition-colors">
+                <a href="#" className="text-[14px] text-ink-muted hover:text-accent transition-colors py-2 block">
                   {siteConfig.instagram}
                 </a>
               </div>
